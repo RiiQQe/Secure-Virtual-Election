@@ -8,6 +8,6 @@
 
 public class client {
 	
-	Hej michael!
+	//Hej michael!
 	
 }

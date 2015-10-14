@@ -12,6 +12,7 @@
 hs_err_pid*
 
 *.pydevproject
+.recommenders
 .metadata
 .gradle
 bin/

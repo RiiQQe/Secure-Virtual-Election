@@ -18,6 +18,7 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.TrustManagerFactory;
 
 public class CLA {
+
 	private int port;
 	// This is not a reserved port number
 	static final int DEFAULT_PORT = 8189;
@@ -197,4 +198,6 @@ public class CLA {
 		CLA addServe = new CLA( port );
 		addServe.run();
 	}
+
+	//Kalle
 }

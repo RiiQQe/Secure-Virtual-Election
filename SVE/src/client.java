@@ -11,7 +11,7 @@ import java.net.UnknownHostException;
 
 
 public class client {
-	
+	//Testing
 	private int port;
 	private InetAddress host;
 	

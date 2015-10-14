@@ -10,7 +10,6 @@ import java.net.UnknownHostException;
 */
 
 
-
 public class client {
 	
 	private int port;

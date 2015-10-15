@@ -1,6 +1,8 @@
 import java.awt.GridLayout;
 import java.awt.TextArea;
 import java.awt.event.*;
+import java.net.InetAddress;
+
 import javax.swing.*;
 
 public class GUI extends JFrame {
@@ -11,6 +13,9 @@ public class GUI extends JFrame {
 	private JButton submitBTN;
 	final JFrame frame = new JFrame();
 	final JPanel panel = new JPanel();
+	
+	static final int DEFAULT_CLA_PORT = 8189;	//Client to CLA 8189
+	static final int DEFAULT_CTF_PORT = 8190;	//Client to STF 8190
 	// Constructor:
 	public GUI() {
 		voterIdLBL = new JLabel("Enter your voterid below:");
@@ -36,12 +41,29 @@ public class GUI extends JFrame {
 		frame.setSize(500, 500);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
+		//Connection between Client and CLA&CTF servers
+		final ClientProtocol ptc = new ClientProtocol();
+		try{
+			InetAddress.getLocalHost();		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		int portCLA = DEFAULT_CLA_PORT;
+		int portCTF = DEFAULT_CTF_PORT;
+		
+		client CLAClient = new client( host, portCLA );
+		final SSLSocket CLASocket = CLAClient.runCLA();
+		textArea.append("CLT Socket connection open \n");
+		
 		submitBTN.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				System.out.println("Funkar");
+				if(!voterIdTF.getText().equals("") && !passwordTF.getText().equals("")){
+					String credentials = voterIdTF.getText() + " " + passwordTF.getText();
+				}
 			}
 			
 		});

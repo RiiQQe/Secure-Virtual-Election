@@ -6,6 +6,8 @@
  * */
 import java.util.LinkedList;
 
+import javax.swing.JOptionPane;
+
 public class Database {
 	
 	private LinkedList<User> userDB = new LinkedList<User>();
@@ -24,7 +26,9 @@ public class Database {
 	}
 	
 	public User verifyUser(String[] user){
-		
+
+        JOptionPane.showMessageDialog(null, "thank you for using java");
+        
 		for(User tmpUser : userDB){
 			if(tmpUser.getName().equals(user[0]) && tmpUser.getPassword().equals(user[1]))
 				return tmpUser;

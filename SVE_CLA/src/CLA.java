@@ -18,6 +18,7 @@ import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.TrustManagerFactory;
+import javax.swing.JOptionPane;
 
 public class CLA {
 
@@ -59,21 +60,12 @@ public class CLA {
 		SSLServerSocketFactory sslServerFactory = sslContext.getServerSocketFactory();
 		sss = (SSLServerSocket) sslServerFactory.createServerSocket( port );
 		sss.setEnabledCipherSuites( sss.getSupportedCipherSuites() );
-		
+
 		System.out.println("\n>>>> CLAServer: active ");
-                    
-		SSLSocket incoming = (SSLSocket)sss.accept();
+		 
+		/*SSLSocket incoming = (SSLSocket)sss.accept();
                     
         incoming.setNeedClientAuth(true);
-        
-        Database kalle = Database.instance();
-        String new2[] = null;
-        //new2[0] = new String("Kalle");
-        //new2[1] = new String("password");
-        
-        User Rickard = kalle.instance().verifyUser(new2);
-        if(Rickard != null) System.out.println(Rickard.getName());
-        else System.out.println("Sorry");
         
         //Declare array of certificates
         java.security.cert.Certificate[] peerCertificates;
@@ -90,7 +82,7 @@ public class CLA {
             System.out.println("Sorry, authentication failed");
         }else{
         	System.out.println("Authentication succeded");            
-		}
+		}*/
 		}catch( Exception x ) {
 			System.out.println( x );
 			x.printStackTrace();
@@ -127,9 +119,13 @@ public class CLA {
 		
 		while(true){
 			try{
-				System.out.println("here2");
+				System.out.println("Hereees");
 				SSLSocket socToClient = (SSLSocket)sss.accept();
+				System.out.println("Heer");
+				
 				(new Thread(new Sockets(socToClient))).start();
+
+				
 			}catch(IOException e){
 				System.out.println("Failed to authenticate client");
 				

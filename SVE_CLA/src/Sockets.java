@@ -1,4 +1,5 @@
 import javax.net.ssl.SSLSocket;
+import javax.swing.JOptionPane;
 
 
 /*
@@ -13,11 +14,15 @@ public class Sockets implements Runnable{
 	private User user;
 	
 	public Sockets(SSLSocket socToClient){
+		JOptionPane.showMessageDialog(null, "Creating Socket");
+        
 		this.socToClient = socToClient;
 		/*this.socToCTF = socToCTF;*/
 	}
 	
 	public void run(){
+
+        
 		protocol = new CLAProtocol();
 		
 		while(true){

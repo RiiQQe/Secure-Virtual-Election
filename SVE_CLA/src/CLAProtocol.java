@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 import javax.net.ssl.*;
+import javax.swing.JOptionPane;
 
 /*
  * 	Protocol for CLA, to recieve and send messages
@@ -14,6 +15,7 @@ public class CLAProtocol {
 		String msgArr[] = null;
 		
 		try{
+	        
 			BufferedReader brIn = new BufferedReader( new InputStreamReader( socketIn.getInputStream() ) );
 			
 			String str = brIn.readLine();

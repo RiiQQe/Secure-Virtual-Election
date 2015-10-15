@@ -22,27 +22,31 @@ public class ClientProtocol {
 
 	public String[] getMessage(SSLSocket socket){
 		String[] messageArray = null;
-		try{
-			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			String inStr = in.readLine();
-			StringTokenizer st = new StringTokenizer(inStr);
-			int i = 0;
-			messageArray = new String[st.countTokens()];
-			
-			while(st.hasMoreTokens()){
-				messageArray[i] = new String(st.nextToken());
-				i++;
-				System.out.println("st = " + st.toString());
+		
+			try{
+				BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				String inStr = in.readLine();
+				StringTokenizer st = new StringTokenizer(inStr);
+				int i = 0;
+				messageArray = new String[st.countTokens()];
+				
+				while(st.hasMoreTokens()){
+					messageArray[i] = new String(st.nextToken());
+					i++;
+					System.out.println("st = " + st.toString());
+				}
+				
+			}catch(IOException e){
+				e.printStackTrace();
+				
 			}
 			
-		}catch(IOException e){
-			e.printStackTrace();
-			
-		}
+		
 		if(messageArray == null){
 			System.out.println("ClientProtocol: messageArray == null");
 		}
 		return messageArray;
+
 		
 	}
 }

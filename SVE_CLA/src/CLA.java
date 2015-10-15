@@ -65,8 +65,15 @@ public class CLA {
 		SSLSocket incoming = (SSLSocket)sss.accept();
                     
         incoming.setNeedClientAuth(true);
-
-        System.out.println("");
+        
+        Database kalle = Database.instance();
+        String new2[] = null;
+        //new2[0] = new String("Kalle");
+        //new2[1] = new String("password");
+        
+        User Rickard = kalle.instance().verifyUser(new2);
+        if(Rickard != null) System.out.println(Rickard.getName());
+        else System.out.println("Sorry");
         
         //Declare array of certificates
         java.security.cert.Certificate[] peerCertificates;
@@ -102,6 +109,7 @@ public class CLA {
 		//CLAClient clac;
 		
 		Database db = Database.instance();
+		
 		/*
 		 * Use this to connect with CTF
 		 * 
@@ -114,6 +122,7 @@ public class CLA {
 		
 		
 		CLA addServer = new CLA( clientPort );
+		
 		addServer.run();
 		
 		while(true){

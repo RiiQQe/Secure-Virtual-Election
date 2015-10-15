@@ -24,6 +24,7 @@ public class Database {
 	}
 	
 	public User verifyUser(String[] user){
+		
 		for(User tmpUser : userDB){
 			if(tmpUser.getName().equals(user[0]) && tmpUser.getPassword().equals(user[1]))
 				return tmpUser;

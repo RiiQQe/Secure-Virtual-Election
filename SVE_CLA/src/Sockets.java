@@ -1,5 +1,6 @@
 import javax.net.ssl.SSLSocket;
 
+
 /*
  * Handles sockets from client and CTF-server
  * */
@@ -21,6 +22,7 @@ public class Sockets implements Runnable{
 		
 		while(true){
 			if(userAuthorization()){
+				
 				protocol.sendMessage(socToClient, "Login succeded");
 				protocol.sendValidationId(socToClient, user.getValidId());
 				

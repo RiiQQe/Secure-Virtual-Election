@@ -19,7 +19,6 @@ import javax.net.ssl.TrustManagerFactory;
 
 public class CLA {
 
-
 	private int port;
 	// This is not a reserved port number
 	static final int DEFAULT_PORT = 8189;
@@ -37,11 +36,9 @@ public class CLA {
 	public void run(){
 		try {
 
-		System.out.println("Inne i runloopen");
 		KeyStore ks = KeyStore.getInstance( "JCEKS" );
 		ks.load( new FileInputStream( KEYSTORE ), STOREPASSWD.toCharArray() );
 
-		System.out.println("Inne i runloopen");
 		KeyStore ts = KeyStore.getInstance( "JCEKS" );
 		ts.load( new FileInputStream( TRUSTSTORE ), STOREPASSWD.toCharArray() );
 		

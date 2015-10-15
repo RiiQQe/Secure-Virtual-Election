@@ -2,11 +2,8 @@
 //import java.net.UnknownHostException;
 //
 ///*
-//*
 //*   Author: Rickard & Michael
-//*   Liu-Student id: ricli877 & micsj823
-//*   
-//*
+//*   Liu-Student id: ricli877 & micsj823  
 //*/
 //
 //

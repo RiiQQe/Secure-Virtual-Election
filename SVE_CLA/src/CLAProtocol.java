@@ -25,6 +25,7 @@ public class CLAProtocol {
 			msgArr = new String[ token.countTokens() ];
 			
 			while( token.hasMoreTokens() ){
+				System.out.println("here");
 				msgArr[i] = new String( token.nextToken() );
 				i++;
 			}

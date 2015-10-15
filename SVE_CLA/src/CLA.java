@@ -118,7 +118,7 @@ public class CLA {
 		
 		while(true){
 			try{
-				
+				System.out.println("here2");
 				SSLSocket socToClient = (SSLSocket)sss.accept();
 				(new Thread(new Sockets(socToClient))).start();
 			}catch(IOException e){

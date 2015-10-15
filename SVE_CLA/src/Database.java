@@ -17,25 +17,34 @@ public class Database {
 	}
 	
 	public static Database instance(){
+		JOptionPane.showMessageDialog(null, "Creating Dataabse2");
 		return SingletonHolder.INSTANCE;
 	}
 	
 	private Database (){
-		User user = new User("Kalle", "password	", null);
+
+		JOptionPane.showMessageDialog(null, "Creating Dataabse3");
+		User user = new User("Kalle", "password", null);
 		userDB.add(user);
 	}
 	
 	public User verifyUser(String[] user){
 
-        JOptionPane.showMessageDialog(null, "verifying user..");
+		System.out.println("Veryfiying user..: Username:" + user[0] + "password:" + user[1]);
         
 		for(User tmpUser : userDB){
+			
+			System.out.println(tmpUser.getPassword() + "!");
 			if(tmpUser.getName().equals(user[0]) && tmpUser.getPassword().equals(user[1]))
 				return tmpUser;
 		}
+		
+		System.out.println("Cannot Find");
 		return null;
 	}
-	
+	public int getSize(){
+		return userDB.size();
+	}
 	
 }
 

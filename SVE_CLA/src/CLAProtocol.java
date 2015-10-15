@@ -28,7 +28,8 @@ public class CLAProtocol {
 			msgArr = new String[ token.countTokens() ];
 			
 			while( token.hasMoreTokens() ){
-				msgArr[i] = new String( token.nextToken() );
+				
+				msgArr[i] = (new String( token.nextToken() )).trim();
 				i++;
 			}
 			

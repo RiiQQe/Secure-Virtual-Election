@@ -13,6 +13,7 @@ public class CLAProtocol {
 	public String[] getMessage(SSLSocket socketIn){
 		
 		String msgArr[] = null;
+		System.out.println("Getting message...");
 		
 		try{
 	        
@@ -21,13 +22,12 @@ public class CLAProtocol {
 			String str = brIn.readLine();
 			
 			StringTokenizer token = new StringTokenizer( str );
-			
+			System.out.println("size: " + token.countTokens());
 			int i = 0;
 			
 			msgArr = new String[ token.countTokens() ];
 			
 			while( token.hasMoreTokens() ){
-				System.out.println("here");
 				msgArr[i] = new String( token.nextToken() );
 				i++;
 			}

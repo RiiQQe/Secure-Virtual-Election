@@ -14,7 +14,6 @@ public class Sockets implements Runnable{
 	private User user;
 	
 	public Sockets(SSLSocket socToClient){
-		JOptionPane.showMessageDialog(null, "Creating Socket");
         
 		this.socToClient = socToClient;
 		/*this.socToCTF = socToCTF;*/
@@ -39,6 +38,7 @@ public class Sockets implements Runnable{
 	}
 	
 	public boolean userAuthorization(){
+		
 		String[] userInfo = protocol.getMessage(socToClient);
 		
 		user = Database.instance().verifyUser(userInfo);

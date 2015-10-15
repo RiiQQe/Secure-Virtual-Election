@@ -40,7 +40,7 @@ public class ClientProtocol {
 			
 		}
 		if(messageArray == null){
-			System.out.println("ClientProtocol: messageArray == nulll");
+			System.out.println("ClientProtocol: messageArray == null");
 		}
 		return messageArray;
 		

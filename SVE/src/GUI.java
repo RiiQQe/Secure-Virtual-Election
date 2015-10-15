@@ -22,16 +22,6 @@ public class GUI extends JFrame {
 		
 		panel.setLayout(new GridLayout(6,2));
 		
-		submitBTN.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				System.out.println("Funkar");
-			}
-			
-		});
-		
 	    panel.add(voterIdLBL);
 	    panel.add(voterIdTF);
 	    panel.add(passwordLBL);
@@ -45,6 +35,16 @@ public class GUI extends JFrame {
 		frame.setTitle("Virtual Voting Booth");
 		frame.setSize(500, 500);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		
+		submitBTN.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("Funkar");
+			}
+			
+		});
 		
 	} 
 

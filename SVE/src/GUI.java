@@ -9,6 +9,7 @@ public class GUI extends JFrame {
 	private JLabel voterIdLBL, passwordLBL;
 	private JTextField voterIdTF, passwordTF;
 	private TextArea textArea;
+	private JButton submit;
 	// Constructor:
 	public GUI() {
 		voterIdLBL = new JLabel("Enter your voterid below:");
@@ -19,14 +20,18 @@ public class GUI extends JFrame {
 		
 		textArea = new TextArea("", 5, 30);
 		
+		submit = new JButton("Click to submit voterid and password");
+		
 	    Container pane = getContentPane();
-	    pane.setLayout(new GridLayout(5, 2));
+	    pane.setLayout(new GridLayout(6, 2));
 	    
 	    pane.add(voterIdLBL);
 	    pane.add(voterIdTF);
 	    pane.add(passwordLBL);
 	    pane.add(passwordTF);
+	    pane.add(submit);
 	    pane.add(textArea);
+	    
 		
 		setTitle("Virtual Voting Booth");
 		setSize(500,400); // default size is 0,0

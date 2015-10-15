@@ -3,7 +3,7 @@ import javax.net.ssl.SSLSocket;
 /*
  * Handles sockets from client and CTF-server
  * */
-public class Sockets {
+public class Sockets implements Runnable{
 
 	private SSLSocket socToClient;
 	private SSLSocket socToCTF;
@@ -27,7 +27,7 @@ public class Sockets {
 				//Send to CTF also
 				//Later problem..
 				
-			}
+			}else protocol.sendMessage(socToClient, "Login failed, try again");
 		}
 	}
 	

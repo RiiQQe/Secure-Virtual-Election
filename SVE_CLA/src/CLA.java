@@ -7,6 +7,8 @@
 */
 
 import java.io.*;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.security.KeyStore;
 
 import javax.net.ssl.KeyManagerFactory;
@@ -21,7 +23,9 @@ public class CLA {
 
 	private int port;
 	// This is not a reserved port number
-	static final int DEFAULT_PORT = 8189;
+	static final int DEFAULT_CLIENT_PORT = 8189;
+	static final int DEFAULT_CTF_PORT = 8191;
+	
 	static final String KEYSTORE = "CLAkeystore.ks";
 	static final String TRUSTSTORE = "CLAtruststore.ks";
 	static final String STOREPASSWD = "password123";
@@ -54,7 +58,7 @@ public class CLA {
 		SSLServerSocket sss = (SSLServerSocket) sslServerFactory.createServerSocket( port );
 		sss.setEnabledCipherSuites( sss.getSupportedCipherSuites() );
 		
-		System.out.println("\n>>>> SecureAdditionServer: active ");
+		System.out.println("\n>>>> CLAServer: active ");
                     
 		SSLSocket incoming = (SSLSocket)sss.accept();
                     
@@ -90,12 +94,22 @@ public class CLA {
 	 */
 	public static void main( String[] args ) {
 	    
-		int port = DEFAULT_PORT;
-		if (args.length > 0 ) {
-			port = Integer.parseInt( args[0] );
+		int clientPort = DEFAULT_CLIENT_PORT;
+		int CTFPort = DEFAULT_CTF_PORT;
+		InetAddress host;
+		//CLAClient clac;
+		
+		Database db = Database.instance();
+		
+		try{
+			host = InetAddress.getLocalHost();
+			
+		}catch(UnknownHostException e){
+			e.printStackTrace();
 		}
-		CLA addServe = new CLA( port );
-		addServe.run();
+		
+		CLA addServer = new CLA( clientPort );
+		addServer.run();
 	}
 
 }

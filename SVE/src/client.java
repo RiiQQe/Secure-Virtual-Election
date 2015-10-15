@@ -57,7 +57,6 @@ public class client {
 			
 			System.out.println("Handshake completed");
 			
-			
 		}catch(Exception x){
 			System.out.println("Problem : " + x);
 			x.printStackTrace();

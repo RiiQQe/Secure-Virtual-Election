@@ -11,7 +11,7 @@ import javax.net.ssl.*;
 */
 
 
-public class client {
+public class Client {
 	//Testing
 	private int port;
 	private InetAddress host;
@@ -25,12 +25,12 @@ public class client {
 	
 	static final int CLAClientPort = 8189;
 	
-	public client(InetAddress host, int port){
+	public Client(InetAddress host, int port){
 		this.host = host;
 		this.port = port;
 	}
 	
-	public void run(){
+	public SSLSocket run(){
 		
 		try{
 			KeyStore ks = KeyStore.getInstance("JCEKS");
@@ -56,11 +56,15 @@ public class client {
 			client.getSession();
 			
 			System.out.println("Handshake completed");
+		
+			return client;
 			
+
 		}catch(Exception x){
 			System.out.println("Problem : " + x);
 			x.printStackTrace();
 		}
+		return null;
 		
 	}
 	
@@ -75,7 +79,7 @@ public class client {
 			if ( args.length > 1 ) {
 				host = InetAddress.getByName( args[1] );
 			}
-			client addClient = new client( host, port );
+			Client addClient = new Client( host, port );
 			addClient.run();
 		}
 		catch ( UnknownHostException uhx ) {

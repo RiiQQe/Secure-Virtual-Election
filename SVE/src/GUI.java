@@ -1,4 +1,3 @@
-import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.TextArea;
 import java.awt.event.*;
@@ -9,46 +8,47 @@ public class GUI extends JFrame {
 	private JLabel voterIdLBL, passwordLBL;
 	private JTextField voterIdTF, passwordTF;
 	private TextArea textArea;
-	private JButton submit;
+	private JButton submitBTN;
+	final JFrame frame = new JFrame();
+	final JPanel panel = new JPanel();
 	// Constructor:
 	public GUI() {
 		voterIdLBL = new JLabel("Enter your voterid below:");
 		passwordLBL = new JLabel("Enter your password below:");
-		
 		voterIdTF = new JTextField (1);
 		passwordTF = new JTextField (1);
-		
 		textArea = new TextArea("", 5, 30);
+		submitBTN = new JButton("Click to submit voterid and password");
 		
-		submit = new JButton("Click to submit voterid and password");
+		panel.setLayout(new GridLayout(6,2));
 		
-	    Container pane = getContentPane();
-	    pane.setLayout(new GridLayout(6, 2));
+	    panel.add(voterIdLBL);
+	    panel.add(voterIdTF);
+	    panel.add(passwordLBL);
+	    panel.add(passwordTF);
+	    panel.add(submitBTN);
+	    panel.add(textArea);
+	    frame.add(panel);
+	    frame.pack();
+	    frame.setVisible(true);
 	    
-	    pane.add(voterIdLBL);
-	    pane.add(voterIdTF);
-	    pane.add(passwordLBL);
-	    pane.add(passwordTF);
-	    pane.add(submit);
-	    pane.add(textArea);
-	    
+		frame.setTitle("Virtual Voting Booth");
+		frame.setSize(500, 500);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
-		setTitle("Virtual Voting Booth");
-		setSize(500,400); // default size is 0,0
-		setLocation(10,200); // default is 0,0 (top left corner)
-	
-		// Window Listeners
-		addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			} //windowClosing
-		} );
+		submitBTN.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("Funkar");
+			}
+			
+		});
 		
-	
 	} 
 
 	public static void main(String[] args) {
 		JFrame votingBoothGUI = new GUI();
-		votingBoothGUI.setVisible(true);
-	} //main
-} //class EmptyFrame1
+	}
+}

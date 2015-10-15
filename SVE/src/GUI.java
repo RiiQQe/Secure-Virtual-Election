@@ -68,6 +68,7 @@ public class GUI extends JFrame {
 					
 					if(CLASocket != null){
 						ptc.sendMessage(CLASocket, credentials);
+						textArea.append("Sending voterid: " + voterIdTF.getText() + "password: ******* to CLA server");
 					}else{
 						textArea.append("Socket to CLA is Null \n");
 					}

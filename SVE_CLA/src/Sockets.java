@@ -11,9 +11,9 @@ public class Sockets implements Runnable{
 	private CLAProtocol protocol;
 	private User user;
 	
-	public Sockets(SSLSocket socToClient, SSLSocket socToCTF){
+	public Sockets(SSLSocket socToClient){
 		this.socToClient = socToClient;
-		this.socToCTF = socToCTF;
+		/*this.socToCTF = socToCTF;*/
 	}
 	
 	public void run(){

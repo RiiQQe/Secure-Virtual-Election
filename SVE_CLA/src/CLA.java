@@ -21,6 +21,8 @@ import javax.net.ssl.TrustManagerFactory;
 
 public class CLA {
 
+	private static SSLServerSocket sss;
+	
 	private int port;
 	// This is not a reserved port number
 	static final int DEFAULT_CLIENT_PORT = 8189;
@@ -55,7 +57,7 @@ public class CLA {
 		SSLContext sslContext = SSLContext.getInstance( "TLS" );
 		sslContext.init( kmf.getKeyManagers(), tmf.getTrustManagers(), null );
 		SSLServerSocketFactory sslServerFactory = sslContext.getServerSocketFactory();
-		SSLServerSocket sss = (SSLServerSocket) sslServerFactory.createServerSocket( port );
+		sss = (SSLServerSocket) sslServerFactory.createServerSocket( port );
 		sss.setEnabledCipherSuites( sss.getSupportedCipherSuites() );
 		
 		System.out.println("\n>>>> CLAServer: active ");
@@ -100,16 +102,32 @@ public class CLA {
 		//CLAClient clac;
 		
 		Database db = Database.instance();
-		
+		/*
+		 * Use this to connect with CTF
+		 * 
 		try{
 			host = InetAddress.getLocalHost();
 			
 		}catch(UnknownHostException e){
 			e.printStackTrace();
-		}
+		}*/
+		
 		
 		CLA addServer = new CLA( clientPort );
 		addServer.run();
+		
+		while(true){
+			try{
+				
+				SSLSocket socToClient = (SSLSocket)sss.accept();
+				(new Thread(new Sockets(socToClient))).start();
+			}catch(IOException e){
+				System.out.println("Failed to authenticate client");
+				
+			}
+		}
+	
+	
 	}
 
 }

@@ -12,7 +12,7 @@ import javax.net.ssl.*;
 
 
 public class Client {
-	//Testing
+	
 	private int port;
 	private InetAddress host;
 	
@@ -29,6 +29,7 @@ public class Client {
 		this.host = host;
 		this.port = port;
 	}
+	
 	
 	public SSLSocket run(){
 		

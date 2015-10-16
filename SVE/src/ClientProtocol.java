@@ -8,8 +8,10 @@ import javax.net.ssl.SSLSocket;
 
 public class ClientProtocol {
 	
+	//Method to send messages from Client to CLA&CTF. 
 	public void sendMessage(SSLSocket socket, String msg ){
-			
+			//Sending message with to CLA or CTF server(depending on the socket),
+			//using a PrintWriter.
 			try {
 				PrintWriter socketOut = new PrintWriter( socket.getOutputStream(), true );
 				socketOut.println(msg);
@@ -19,21 +21,22 @@ public class ClientProtocol {
 				e.printStackTrace();
 			}
 		}
-
+	
+	//Method to receive messages from CLA and CTF servers.
 	public String[] getMessage(SSLSocket socket){
 		String[] messageArray = null;
-		
+			
+			//Receiving messages using a Bufferedreader.
 			try{
 				BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				String inStr = in.readLine();
 				StringTokenizer st = new StringTokenizer(inStr);
 				int i = 0;
 				messageArray = new String[st.countTokens()];
-				
+				//Storing the message as an array.
 				while(st.hasMoreTokens()){
-					//messageArray[i] = new String(st.nextToken());
+					messageArray[i] = new String(st.nextToken());
 					i++;
-					System.out.println("st = " + st.nextToken());
 				}
 				
 			}catch(IOException e){

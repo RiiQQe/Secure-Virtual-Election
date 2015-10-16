@@ -22,12 +22,10 @@ public class User {
 	}
 	
 	public String getName(){
-		System.out.println("name:" + name + "!");
 		return name;
 	}
 	
 	public String getPassword(){
-		System.out.println("password:" + psswrd + "!");
 		return psswrd;
 	}
 	

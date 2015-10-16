@@ -31,9 +31,9 @@ public class ClientProtocol {
 				messageArray = new String[st.countTokens()];
 				
 				while(st.hasMoreTokens()){
-					messageArray[i] = new String(st.nextToken());
+					//messageArray[i] = new String(st.nextToken());
 					i++;
-					System.out.println("st = " + st.toString());
+					System.out.println("st = " + st.nextToken());
 				}
 				
 			}catch(IOException e){

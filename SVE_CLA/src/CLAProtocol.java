@@ -22,7 +22,6 @@ public class CLAProtocol {
 			String str = brIn.readLine();
 			
 			StringTokenizer token = new StringTokenizer( str );
-			System.out.println("size: " + token.countTokens());
 			int i = 0;
 			
 			msgArr = new String[ token.countTokens() ];
@@ -44,7 +43,6 @@ public class CLAProtocol {
 	
 	public void sendMessage(SSLSocket socketOut, String msg){
 		try{
-			
 			PrintWriter pw = new PrintWriter( socketOut.getOutputStream(), true );
 			pw.println(msg);
 			pw.flush();

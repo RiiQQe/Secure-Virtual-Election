@@ -47,8 +47,8 @@ public class Sockets implements Runnable{
 			System.out.println("Something went wrong in Sockets.java");
 			return false;
 		}
-		System.out.println("name : " + user.getName() + " password: " + user.getPassword() 
-						+ " validId: " + user.getValidId());
+		/*System.out.println("name : " + user.getName() + " password: " + user.getPassword() 
+						+ " validId: " + user.getValidId());*/
 		
 		
 		return true;

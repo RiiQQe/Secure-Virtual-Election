@@ -1,8 +1,5 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 import javax.net.ssl.SSLSocket;
 
@@ -49,6 +46,20 @@ public class ClientProtocol {
 		}
 		return messageArray;
 
+	}
+	
+	public UUID getVerificationNr(SSLSocket socketIn){
+		UUID validId = null;
+		
+		try{
+			BufferedReader bfIn = new BufferedReader( new InputStreamReader( socketIn.getInputStream() ) );
+			
+			validId = UUID.fromString(bfIn.readLine());
+		}catch(Exception e){
+			System.out.println("Something went wrong in ClientProtocol while reading validId..");
+			e.printStackTrace();
+		}
+		return validId;
 		
 	}
 }

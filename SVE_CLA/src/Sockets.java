@@ -20,14 +20,12 @@ public class Sockets implements Runnable{
 	}
 	
 	public void run(){
-
-        
 		protocol = new CLAProtocol();
 		
 		while(true){
 			if(userAuthorization()){
 				
-				protocol.sendMessage(socToClient, "Login succeded");
+				//protocol.sendMessage(socToClient, "Login succeded");
 				protocol.sendValidationId(socToClient, user.getValidId());
 				
 				//Send to CTF also
@@ -36,6 +34,10 @@ public class Sockets implements Runnable{
 			}else protocol.sendMessage(socToClient, "Login failed, try again");
 		}
 	}
+	
+	/*
+	 * Returns true or false if the user can be found in the DB
+	*/
 	
 	public boolean userAuthorization(){
 		
@@ -47,9 +49,6 @@ public class Sockets implements Runnable{
 			System.out.println("Something went wrong in Sockets.java");
 			return false;
 		}
-		/*System.out.println("name : " + user.getName() + " password: " + user.getPassword() 
-						+ " validId: " + user.getValidId());*/
-		
 		
 		return true;
 	}

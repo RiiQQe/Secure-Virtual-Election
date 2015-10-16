@@ -21,8 +21,8 @@ import javax.net.ssl.TrustManagerFactory;
 public class CTF {
 	private int port;
 	
-	static final String KEYSTORE = "CTFkeystore";
-	static final String TRUSTSTORE =  "CTFtruststore";
+	static final String KEYSTORE = "CTFkeystore.ks";
+	static final String TRUSTSTORE =  "CTFtruststore.ks";
 	static final String STOREPASSWD = "password123";
 	static final String ALIASPASSWD = "password123";
 	
@@ -52,7 +52,7 @@ public class CTF {
 			sss = (SSLServerSocket) sslServerFactory.createServerSocket(port);
 			sss.setEnabledCipherSuites(sss.getSupportedCipherSuites());
 			
-			System.out.println("\n>>>> CLAServer: active ");
+			System.out.println("\n>>>> CTFServer: active ");
 	
 			
 		}catch(EOFException e){

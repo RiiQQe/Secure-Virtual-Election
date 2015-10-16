@@ -61,7 +61,7 @@ public class CLA {
 		sss = (SSLServerSocket) sslServerFactory.createServerSocket( port );
 		sss.setEnabledCipherSuites( sss.getSupportedCipherSuites() );
 
-		System.out.println("\n>>>> CLAServer: active ");
+		System.out.println("\n>>>> CLAServer: active at port : " + port);
 		 
 		/*SSLSocket incoming = (SSLSocket)sss.accept();
                     
@@ -98,19 +98,21 @@ public class CLA {
 		int clientPort = DEFAULT_CLIENT_PORT;
 		int CTFPort = DEFAULT_CTF_PORT;
 		InetAddress host;
-		//CLAClient clac;
+		CLAtoCTF serverConn = null;
 		
 		Database db = Database.instance();
 		
 		/*
-		 * Use this to connect with CTF
-		 * 
+		 * Use this to connect with CTF 
+		*/
 		try{
 			host = InetAddress.getLocalHost();
+			serverConn = new CLAtoCTF(host, CTFPort);
+			serverConn.run();
 			
 		}catch(UnknownHostException e){
 			e.printStackTrace();
-		}*/
+		}
 		
 		
 		CLA addServer = new CLA( clientPort );

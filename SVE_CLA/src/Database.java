@@ -25,6 +25,11 @@ public class Database {
 		userDB.add(user);
 	}
 	
+	/*
+	 * Used to find if User is in DB
+	 * return user if found and null if not 
+	*/
+	
 	public User verifyUser(String[] user){
 		for(User tmpUser : userDB){
 			if(tmpUser.getName().equals(user[0]) && tmpUser.getPassword().equals(user[1]))
@@ -34,9 +39,7 @@ public class Database {
 		System.out.println("Cannot Find");
 		return null;
 	}
-	public int getSize(){
-		return userDB.size();
-	}
+	
 	
 }
 

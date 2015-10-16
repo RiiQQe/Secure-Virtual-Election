@@ -10,6 +10,11 @@ import javax.swing.JOptionPane;
 
 public class CLAProtocol {
 
+	/*
+	 * Used to retrive messages from sockets
+	 * Returns String of the message
+	 */
+	
 	public String[] getMessage(SSLSocket socketIn){
 		
 		String msgArr[] = null;
@@ -41,6 +46,11 @@ public class CLAProtocol {
 		return msgArr;
 	}
 	
+	/*
+	 * Used to send message to sockets
+	 * takes socket to send message to and message to be sent
+	 * */
+	
 	public void sendMessage(SSLSocket socketOut, String msg){
 		try{
 			PrintWriter pw = new PrintWriter( socketOut.getOutputStream(), true );
@@ -51,6 +61,10 @@ public class CLAProtocol {
 			e.printStackTrace();
 		}
 	}
+	/*
+	 * Used to send validationId to sockets
+	 * since validId is not a string a separate is needed
+	 * */
 	
 	public void sendValidationId(SSLSocket socketOut, UUID validId){
 		try{

@@ -38,7 +38,6 @@ public class ClientProtocol {
 				
 			}catch(IOException e){
 				e.printStackTrace();
-				
 			}
 			
 		

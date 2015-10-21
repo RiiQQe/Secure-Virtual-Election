@@ -90,13 +90,12 @@ public class CTF {
 		}
 		CTF CTFToClient = new CTF(portClient);
 		CTFToClient.run();
-		
+				
 		while(true){
 			try {
 				System.out.println("beefore");
 				SSLSocket socketToClient = (SSLSocket)sss.accept();
-				System.out.println("HEEJSAN");
-				//sss.setNeedClientAuth(true);
+
 				System.out.println("CTF server socket to Client established");
 				(new Thread(new ClientHandler(socketToClient))).start();
 			} catch (IOException e) {

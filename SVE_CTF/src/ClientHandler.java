@@ -18,9 +18,12 @@ public class ClientHandler implements Runnable{
 	public void run(){
 		
 		while(true){
-			//System.out.println("HERE I AM");
-			//UUID msg1 = protocol.getVerificationNr(socketToClient);
+			System.out.println("YES");
 			String[] msg = protocol.getMessage(socketToClient);
+			
+			System.out.println("FROM CLIENT in CTF: " + msg[0]);
+			
+			//System.out.println("HERE I AM" + socketToClient);
 			Action action = Action.valueOf(msg[0]);
 			
 			switch(action){

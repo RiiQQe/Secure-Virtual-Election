@@ -18,7 +18,6 @@ public class CLAProtocol {
 	public String[] getMessage(SSLSocket socketIn){
 		
 		String msgArr[] = null;
-		System.out.println("Getting message...");
 		
 		try{
 	        

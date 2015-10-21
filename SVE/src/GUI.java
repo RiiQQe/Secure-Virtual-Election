@@ -111,11 +111,15 @@ public class GUI extends JFrame {
 					
 					if(msgStatus[0].equals("LoginSucceded")){
 						textArea.append("Login Succeded \n");
-						textArea.append("Your validationID is " + msgValidationID[0] + "\n");
+						textArea.append("sending : " + msgValidationID[0] + " to ctf \n");
+						ptc.sendMessage(CTFSocket, "Hejsan");
+						
 					}
 					else{
 						textArea.append(msgStatus[0] + "\n");
 					}
+					
+					
 					
 					
 					

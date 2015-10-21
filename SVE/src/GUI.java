@@ -89,10 +89,19 @@ public class GUI extends JFrame {
 						textArea.append("Socket to CLA is Null \n");
 					}
 					
-					String[] msgAccept = ptc.getMessage(CLASocket);
+					String[] msgStatus = ptc.getMessage(CLASocket);
 					String[] msgValidationID = ptc.getMessage(CLASocket);
-					textArea.append(msgAccept[0] + "\n");
-					textArea.append("Your validationID is " + msgValidationID[0] + "\n");
+					
+					if(msgStatus[0].equals("LoginSucceded")){
+						textArea.append("Login Succeded \n");
+						textArea.append("Your validationID is " + msgValidationID[0] + "\n");
+					}
+					else{
+						textArea.append(msgStatus[0] + "\n");
+					}
+					
+//					textArea.append(msgAccept[0] + "\n");
+//					textArea.append("Your validationID is " + msgValidationID[0] + "\n");
 					
 				}
 				

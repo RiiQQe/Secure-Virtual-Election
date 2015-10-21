@@ -50,7 +50,7 @@ public class Client {
 			sslContext.init(kmf.getKeyManagers(), tmf.getTrustManagers() , null);
 			
 			SSLSocketFactory sslFactory = sslContext.getSocketFactory();
-			client = (SSLSocket)sslFactory.createSocket(host, CLAClientPort);
+			client = (SSLSocket)sslFactory.createSocket(host, port);
 			
 			client.setEnabledCipherSuites( client.getEnabledCipherSuites() );
 			

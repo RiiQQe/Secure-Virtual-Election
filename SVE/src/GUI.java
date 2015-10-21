@@ -82,7 +82,7 @@ public class GUI extends JFrame {
 		Client CLAClient = new Client( host, portCLA );
 		//Retrieves SSLSocket from the Client.
 		final SSLSocket CLASocket = CLAClient.run();
-		textArea.append("CLT Socket connection open \n");
+		textArea.append("CLA Socket connection open \n");
 		
 		//ActionListener for the button that submits VoterID and Password. 
 		credentialsBTN.addActionListener(new ActionListener(){

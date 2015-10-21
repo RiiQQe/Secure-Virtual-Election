@@ -34,7 +34,7 @@ public class Sockets implements Runnable{
 				
 				//protocol.sendMessage(socToCTF, "msg");
 				
-			}else protocol.sendMessage(socToClient, "Login failed, try again");
+			}else protocol.sendMessage(socToClient, "LoginFailed, try again");
 		}
 	}
 	

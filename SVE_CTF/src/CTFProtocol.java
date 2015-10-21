@@ -55,7 +55,6 @@ public class CTFProtocol {
 			
 			validId = UUID.fromString(bfIn.readLine());
 			
-			
 		}catch(Exception e){
 			System.out.println("Something went wrong while reading ValidID");
 			e.printStackTrace();

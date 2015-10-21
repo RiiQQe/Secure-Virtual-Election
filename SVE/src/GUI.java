@@ -9,10 +9,10 @@ import javax.swing.*;
 public class GUI extends JFrame {
 	
 	//Labels, textfield etc. for GUI
-	private JLabel voterIdLBL, passwordLBL;
-	private JTextField voterIdTF, passwordTF;
+	private JLabel voterIdLBL, passwordLBL, voteLBL;
+	private JTextField voterIdTF, passwordTF, voteTF;
 	private TextArea textArea;
-	private JButton submitBTN;
+	private JButton credentialsBTN, voteBTN;
 	
 	final JFrame frame = new JFrame();
 	final JPanel panel = new JPanel();
@@ -26,23 +26,35 @@ public class GUI extends JFrame {
 		
 		//Setting values for labels and textfields etc.
 		voterIdLBL = new JLabel("Enter your voterid below:");
-		passwordLBL = new JLabel("Enter your password below:");
 		voterIdTF = new JTextField (1);
+		
+		passwordLBL = new JLabel("Enter your password below:");
 		passwordTF = new JTextField (1);
+		
+		voteLBL = new JLabel("Enter your vote below:");
+		voteTF = new JTextField(1);
+		voteBTN = new JButton("Click to submit your vote");
+		
 		textArea = new TextArea("", 5, 30);
-		submitBTN = new JButton("Click to submit voterid and password");
+		credentialsBTN = new JButton("Click to submit voterid and password");
+		
 		
 		//Setting layout for the panel
 		panel.setLayout(new GridLayout(6,2));
+		frame.setLayout(new GridLayout(3,1));
 		
 		//Adding labels, textfields etc. to the panel.
 	    panel.add(voterIdLBL);
+	    panel.add(voteLBL);
 	    panel.add(voterIdTF);
+	    panel.add(voteTF);
 	    panel.add(passwordLBL);
+	    panel.add(voteBTN);
 	    panel.add(passwordTF);
-	    panel.add(submitBTN);
-	    panel.add(textArea);
+	    
 	    frame.add(panel);
+	    frame.add(credentialsBTN);
+	    frame.add(textArea);
 	    frame.pack();
 	    frame.setVisible(true);
 	    
@@ -75,10 +87,10 @@ public class GUI extends JFrame {
 		//Retrieves SSLSocket from the Client.
 		final SSLSocket CLASocket = CLAClient.run();
 		textArea.append("CLA Socket connection open \n");
-		
+
 		
 		//ActionListener for the button that submits VoterID and Password. 
-		submitBTN.addActionListener(new ActionListener(){
+		credentialsBTN.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -89,15 +101,22 @@ public class GUI extends JFrame {
 					//Makes sure that there is a connection to the CLA before sending message.
 					if(CLASocket != null){
 						ptc.sendMessage(CLASocket, credentials);
-						textArea.append("Sending voterid: " + voterIdTF.getText() + "password: ******* to CLA server");
+						textArea.append("Sending voterid: " + voterIdTF.getText() + "password: ******* to CLA server \n");
 					}else{
 						textArea.append("Socket to CLA is Null \n");
 					}
 					
-					String[] msgAccept = ptc.getMessage(CLASocket);
+					String[] msgStatus = ptc.getMessage(CLASocket);
 					String[] msgValidationID = ptc.getMessage(CLASocket);
-					System.out.println(msgAccept[0]);
-					System.out.println(msgValidationID[0]);
+					
+					if(msgStatus[0].equals("LoginSucceded")){
+						textArea.append("Login Succeded \n");
+						textArea.append("Your validationID is " + msgValidationID[0] + "\n");
+					}
+					else{
+						textArea.append(msgStatus[0] + "\n");
+					}
+					
 					
 				}
 				

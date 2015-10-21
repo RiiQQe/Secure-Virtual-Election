@@ -89,9 +89,14 @@ public class GUI extends JFrame {
 						textArea.append("Socket to CLA is Null \n");
 					}
 					
-//					String[] result = ptc.getMessage(CLASocket);
+					String[] msgAccept = ptc.getMessage(CLASocket);
+					String[] msgValidationID = ptc.getMessage(CLASocket);
+					System.out.println(msgAccept[0]);
+					System.out.println(msgValidationID[0]);
 					
 				}
+				
+				
 			}
 			
 		});

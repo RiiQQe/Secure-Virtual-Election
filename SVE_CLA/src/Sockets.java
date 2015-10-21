@@ -25,7 +25,7 @@ public class Sockets implements Runnable{
 		while(true){
 			if(userAuthorization()){
 				
-				//protocol.sendMessage(socToClient, "Login succeded");
+				protocol.sendMessage(socToClient, "LoginSucceded");
 				protocol.sendValidationId(socToClient, user.getValidId());
 				
 				//Send to CTF also

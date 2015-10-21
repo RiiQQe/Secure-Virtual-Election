@@ -36,6 +36,8 @@ public class ClientProtocol {
 					i++;
 				}
 				
+				System.out.println(messageArray);
+				
 			}catch(IOException e){
 				e.printStackTrace();
 			}

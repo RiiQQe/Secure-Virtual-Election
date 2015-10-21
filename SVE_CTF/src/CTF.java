@@ -93,10 +93,8 @@ public class CTF {
 				
 		while(true){
 			try {
-				System.out.println("beefore");
 				SSLSocket socketToClient = (SSLSocket)sss.accept();
-
-				System.out.println("CTF server socket to Client established");
+				
 				(new Thread(new ClientHandler(socketToClient))).start();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

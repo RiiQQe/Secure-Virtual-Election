@@ -46,6 +46,7 @@ public class CLAtoCTF {
 			
 			CTFConn = (SSLSocket)sslFactory.createSocket(host, port);
 			CTFConn.setEnabledCipherSuites( CTFConn.getEnabledCipherSuites() );
+			
 			System.out.println(">>>>> Handshake between CLA and CTF completed..");
 			
 		}catch( Exception x ){

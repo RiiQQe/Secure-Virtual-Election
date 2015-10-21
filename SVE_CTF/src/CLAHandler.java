@@ -13,7 +13,6 @@ public class CLAHandler implements Runnable{
 	public void run(){
 		while(true){
 			try {
-				System.out.println("Hejsan" + socketToCla);
 				UUID verifyNr = protocol.getVerificationNr(socketToCla);
 				if(ValidationNrContainer.instance().verifyNewNr(verifyNr)){
 					ValidationNrContainer.instance().addNr(verifyNr);

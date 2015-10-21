@@ -84,15 +84,15 @@ public class GUI extends JFrame {
 					//Makes sure that there is a connection to the CLA before sending message.
 					if(CLASocket != null){
 						ptc.sendMessage(CLASocket, credentials);
-						textArea.append("Sending voterid: " + voterIdTF.getText() + "password: ******* to CLA server");
+						textArea.append("Sending voterid: " + voterIdTF.getText() + "password: ******* to CLA server \n");
 					}else{
 						textArea.append("Socket to CLA is Null \n");
 					}
 					
 					String[] msgAccept = ptc.getMessage(CLASocket);
 					String[] msgValidationID = ptc.getMessage(CLASocket);
-					System.out.println(msgAccept[0]);
-					System.out.println(msgValidationID[0]);
+					textArea.append(msgAccept[0] + "\n");
+					textArea.append("Your validationID is " + msgValidationID[0] + "\n");
 					
 				}
 				

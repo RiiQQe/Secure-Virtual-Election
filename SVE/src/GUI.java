@@ -65,12 +65,17 @@ public class GUI extends JFrame {
 		//Ports to be used for connection with CLA and CTF
 		int portCLA = DEFAULT_CLA_PORT;
 		int portCTF = DEFAULT_CTF_PORT;
+
+		Client CTFClient = new Client( host, portCTF);
+		final SSLSocket CTFSocket = CTFClient.run();
+		textArea.append("CTF Socket connection open \n");
 		
 		//Creates a new client with the resolved InetAdress and the specific CLA port. 
 		Client CLAClient = new Client( host, portCLA );
 		//Retrieves SSLSocket from the Client.
 		final SSLSocket CLASocket = CLAClient.run();
-		textArea.append("CLT Socket connection open \n");
+		textArea.append("CLA Socket connection open \n");
+		
 		
 		//ActionListener for the button that submits VoterID and Password. 
 		submitBTN.addActionListener(new ActionListener(){

@@ -13,10 +13,10 @@ public class Sockets implements Runnable{
 	private CLAProtocol protocol;
 	private User user;
 	
-	public Sockets(SSLSocket socToClient){
+	public Sockets(SSLSocket socToClient, SSLSocket socToCTF){
         
 		this.socToClient = socToClient;
-		/*this.socToCTF = socToCTF;*/
+		this.socToCTF = socToCTF;
 	}
 	
 	public void run(){
@@ -29,7 +29,10 @@ public class Sockets implements Runnable{
 				protocol.sendValidationId(socToClient, user.getValidId());
 				
 				//Send to CTF also
-				//Later problem..
+
+				protocol.sendValidationId(socToCTF, user.getValidId());
+				
+				//protocol.sendMessage(socToCTF, "msg");
 				
 			}else protocol.sendMessage(socToClient, "Login failed, try again");
 		}

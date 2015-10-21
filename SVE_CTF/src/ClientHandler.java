@@ -18,7 +18,9 @@ public class ClientHandler implements Runnable{
 	public void run(){
 		
 		while(true){
-			String[] msg = protocol.getMessage(socketToClient);
+			System.out.println("HERE I AM");
+			//UUID msg1 = protocol.getVerificationNr(socketToClient);
+			/*String[] msg = protocol.getMessage(socketToClient);
 			Action action = Action.valueOf(msg[0]);
 			
 			switch(action){
@@ -56,7 +58,7 @@ public class ClientHandler implements Runnable{
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 		}
 		
 		

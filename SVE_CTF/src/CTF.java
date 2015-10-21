@@ -52,7 +52,7 @@ public class CTF {
 			sss = (SSLServerSocket) sslServerFactory.createServerSocket(port);
 			sss.setEnabledCipherSuites(sss.getSupportedCipherSuites());
 			
-			System.out.println("\n>>>> CTFServer: active ");
+			System.out.println("\n>>>> CTFServer: active at port : " + port);
 	
 			
 		}catch(EOFException e){
@@ -64,7 +64,7 @@ public class CTF {
 		}
 	}
 	
-	static final int DEFAULT_CLIENT_PORT = 8190; // CLA to Client 8190
+	static final int DEFAULT_CLIENT_PORT = 8190; // CTF to Client 8190
 	static final int DEFAULT_CLA_PORT = 8191;	//CLA to CTF 8191
 	
 	public static void main(String[] args){
@@ -81,25 +81,27 @@ public class CTF {
 		
 		try{
 			socketToCLA = (SSLSocket)sss.accept();
-			sss.setNeedClientAuth(true);
+			//sss.setNeedClientAuth(true);
 			System.out.println("CTF server socket to CLA established");
 			(new Thread(new CLAHandler(socketToCLA))).start();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		CTF CTFToClient = new CTF(portClient);
 		CTFToClient.run();
 		
 		while(true){
 			try {
+				System.out.println("beefore");
 				SSLSocket socketToClient = (SSLSocket)sss.accept();
-				sss.setNeedClientAuth(true);
-				System.out.println("CTF server socket to Client establiched");
+				System.out.println("HEEJSAN");
+				//sss.setNeedClientAuth(true);
+				System.out.println("CTF server socket to Client established");
 				(new Thread(new ClientHandler(socketToClient))).start();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}

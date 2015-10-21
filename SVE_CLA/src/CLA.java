@@ -26,8 +26,8 @@ public class CLA {
 	
 	private int port;
 	// This is not a reserved port number
-	static final int DEFAULT_CLIENT_PORT = 8189;
-	static final int DEFAULT_CTF_PORT = 8191;
+	static final int DEFAULT_CLIENT_PORT = 8189; //Client to CLA
+	static final int DEFAULT_CTF_PORT = 8191; 	//CLA to CTF
 	
 	static final String KEYSTORE = "CLAkeystore.ks";
 	static final String TRUSTSTORE = "CLAtruststore.ks";
@@ -108,8 +108,9 @@ public class CLA {
 		try{
 			host = InetAddress.getLocalHost();
 			serverConn = new CLAtoCTF(host, CTFPort);
+			//System.out.println("Running CTF again");
 			serverConn.run();
-			
+			//System.out.println("After..");
 		}catch(UnknownHostException e){
 			e.printStackTrace();
 		}
@@ -123,7 +124,9 @@ public class CLA {
 			try{
 				SSLSocket socToClient = (SSLSocket)sss.accept();
 				
-				(new Thread(new Sockets(socToClient))).start();
+				/*Glöm inte socToClient.setAutho(true)*/
+				
+				(new Thread(new Sockets(socToClient, serverConn.getSocket()))).start();
 
 				
 			}catch(IOException e){

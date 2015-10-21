@@ -34,6 +34,8 @@ public class Client {
 	public SSLSocket run(){
 		
 		try{
+			
+			System.out.println("Running client");
 			KeyStore ks = KeyStore.getInstance("JCEKS");
 			ks.load(new FileInputStream( KEYSTORE ), STOREPASSWORD.toCharArray() );
 			
@@ -50,13 +52,13 @@ public class Client {
 			sslContext.init(kmf.getKeyManagers(), tmf.getTrustManagers() , null);
 			
 			SSLSocketFactory sslFactory = sslContext.getSocketFactory();
-			client = (SSLSocket)sslFactory.createSocket(host, CLAClientPort);
+			client = (SSLSocket)sslFactory.createSocket(host, port);
 			
 			client.setEnabledCipherSuites( client.getEnabledCipherSuites() );
 			
 			client.getSession();
 			
-			System.out.println("Handshake completed");
+			System.out.println("Handshake completed" + port);
 		
 			return client;
 			
@@ -68,7 +70,7 @@ public class Client {
 		return null;
 		
 	}
-	
+	/*
 	public static void main(String args[]){
 		try {
 			InetAddress host = InetAddress.getLocalHost();
@@ -87,5 +89,5 @@ public class Client {
 			System.out.println( uhx );
 			uhx.printStackTrace();
 		}
-	}
+	}*/
 }

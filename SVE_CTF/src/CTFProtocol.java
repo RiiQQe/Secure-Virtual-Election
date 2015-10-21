@@ -6,7 +6,6 @@ public class CTFProtocol {
 
 	public String[] getMessage(SSLSocket socketIn){
 		String msgArr[] = null;
-		System.out.println("Getting message in CTF.. ");
 		
 		try{
 			BufferedReader brIn = new BufferedReader( new InputStreamReader( socketIn.getInputStream() ) );

@@ -2,6 +2,7 @@ import java.awt.GridLayout;
 import java.awt.TextArea;
 import java.awt.event.*;
 import java.net.InetAddress;
+import java.util.UUID;
 
 import javax.net.ssl.SSLSocket;
 import javax.swing.*;
@@ -20,6 +21,8 @@ public class GUI extends JFrame {
 	private InetAddress host;
 	static final int DEFAULT_CLA_PORT = 8189;	//Client to CLA 8189
 	static final int DEFAULT_CTF_PORT = 8190;	//Client to CTF 8190
+	
+	private UUID idNr = null, validNr = null;
 	
 	// Constructor, creates a basic GUI to handle user input
 	public GUI() {
@@ -107,23 +110,22 @@ public class GUI extends JFrame {
 					}
 					
 					String[] msgStatus = ptc.getMessage(CLASocket);
-					String[] msgValidationID = ptc.getMessage(CLASocket);
+//					String[] msgValidationID = ptc.getMessage(CLASocket);
 					
 					if(msgStatus[0].equals("LoginSucceded")){
 						textArea.append("Login Succeded \n");
-						textArea.append("sending : " + msgValidationID[0] + " to ctf \n");
-						ptc.sendMessage(CTFSocket, "Hejsan");
+						
+						validNr = ptc.getVerificationNr(CLASocket);
+						idNr = getIdentificationNr();
+						
+						textArea.append("sending : " + validNr + " " + idNr + " to ctf \n");
 						
 					}
 					else{
 						textArea.append(msgStatus[0] + "\n");
 					}
-					
-					
-					
-					
-					
-					
+	
+			
 				}
 				
 				
@@ -131,7 +133,34 @@ public class GUI extends JFrame {
 			
 		});
 		
+		voteBTN.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if(!voteTF.equals("")){
+					String vote = "vote " + validNr + " " + idNr + " " + "Candidate_1";
+					textArea.append(vote + "\n");
+					
+					if(CTFSocket != null){
+						ptc.sendMessage(CTFSocket, vote);
+						textArea.append("You voted for Candidate_1");
+					}
+					else{
+						textArea.append("Socket to CTF is null");
+					}
+					
+				}
+				
+			}
+			
+		});
+		
 	} 
+	
+	public UUID getIdentificationNr(){
+		return UUID.randomUUID();
+	}
 
 	public static void main(String[] args) {
 		JFrame votingBoothGUI = new GUI();

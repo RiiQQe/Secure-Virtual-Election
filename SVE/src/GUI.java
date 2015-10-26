@@ -8,6 +8,10 @@ import javax.swing.*;
 
 public class GUI extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Labels, textfield etc. for GUI
 	private JLabel voterIdLBL, passwordLBL, voteLBL;
 	private JTextField voterIdTF, passwordTF, voteTF;

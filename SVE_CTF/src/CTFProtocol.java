@@ -50,11 +50,9 @@ public class CTFProtocol {
 		UUID validId = null;
 		
 		try{
-			System.out.println("Reading validId from CLA");
 			BufferedReader bfIn = new BufferedReader( new InputStreamReader( socketIn.getInputStream() ) );
-			System.out.println("Reading validId from CLA2");
+			
 			validId = UUID.fromString(bfIn.readLine());
-			System.out.println("Reading validId from CLA3");
 			
 		}catch(Exception e){
 			System.out.println("Something went wrong while reading ValidID");

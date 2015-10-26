@@ -72,24 +72,4 @@ public class Client {
 		return null;
 		
 	}
-	/*
-	public static void main(String args[]){
-		try {
-			InetAddress host = InetAddress.getLocalHost();
-			int port = CLAClientPort;
-			
-			if ( args.length > 0 ) {
-				port = Integer.parseInt( args[0] );
-			}
-			if ( args.length > 1 ) {
-				host = InetAddress.getByName( args[1] );
-			}
-			Client addClient = new Client( host, port );
-			addClient.run();
-		}
-		catch ( UnknownHostException uhx ) {
-			System.out.println( uhx );
-			uhx.printStackTrace();
-		}
-	}*/
 }

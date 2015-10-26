@@ -85,7 +85,6 @@ public class CTF {
 			System.out.println("CTF server socket to CLA established");
 			(new Thread(new CLAHandler(socketToCLA))).start();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		CTF CTFToClient = new CTF(portClient);
@@ -97,8 +96,6 @@ public class CTF {
 				
 				(new Thread(new ClientHandler(socketToClient))).start();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				
 				e.printStackTrace();
 			}
 		}

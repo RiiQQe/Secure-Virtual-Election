@@ -22,7 +22,6 @@ public class ClientHandler implements Runnable{
 			
 			System.out.println("FROM CLIENT in CTF: " + msg[0]);
 			
-			//System.out.println("HERE I AM" + socketToClient);
 			Action action = Action.valueOf(msg[0]);
 			
 			switch(action){
@@ -30,7 +29,6 @@ public class ClientHandler implements Runnable{
 				UUID validNr = UUID.fromString(msg[1]);
 				UUID idNr = UUID.fromString(msg[2]);
 				String vote = msg[3];
-//				System.out.println(validNr + " " + idNr+ " " + vote);
 				
 				if(ValidationNrContainer.instance().verifyNr(validNr)){
 					ValidationNrContainer.instance().setVoted(validNr);

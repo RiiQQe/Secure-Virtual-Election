@@ -50,7 +50,7 @@ public class ClientProtocol {
 
 	}
 	
-	public UUID getVerificationNr(SSLSocket socketIn){
+	public UUID getValidationId(SSLSocket socketIn){
 		UUID validId = null;
 		
 		try{

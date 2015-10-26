@@ -81,7 +81,7 @@ public class CTF {
 		
 		try{
 			socketToCLA = (SSLSocket)sss.accept();
-			//sss.setNeedClientAuth(true);
+			sss.setNeedClientAuth(true);
 			System.out.println("CTF server socket to CLA established");
 			(new Thread(new CLAHandler(socketToCLA))).start();
 		} catch (IOException e) {

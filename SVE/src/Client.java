@@ -58,6 +58,8 @@ public class Client {
 			
 			client.getSession();
 			
+			client.setNeedClientAuth(true);
+			
 			System.out.println("Handshake completed" + port);
 		
 			return client;

@@ -125,7 +125,7 @@ public class CLA {
 				SSLSocket socToClient = (SSLSocket)sss.accept();
 				
 				/*Glöm inte socToClient.setAutho(true)*/
-				
+				socToClient.setNeedClientAuth(true);
 				(new Thread(new Sockets(socToClient, serverConn.getSocket()))).start();
 
 				

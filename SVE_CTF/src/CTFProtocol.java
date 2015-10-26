@@ -46,7 +46,7 @@ public class CTFProtocol {
 		
 	}
 	
-	public UUID getVerificationNr(SSLSocket socketIn){
+	public UUID getValidationId(SSLSocket socketIn){
 		UUID validId = null;
 		
 		try{

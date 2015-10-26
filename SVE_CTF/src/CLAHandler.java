@@ -13,10 +13,10 @@ public class CLAHandler implements Runnable{
 	public void run(){
 		while(true){
 			try {
-				UUID verifyNr = protocol.getVerificationNr(socketToCla);
-				if(ValidationNrContainer.instance().verifyNewNr(verifyNr)){
-					ValidationNrContainer.instance().addNr(verifyNr);
-					System.out.println("CTL recived validationnumber " + verifyNr+  " from CLA");
+				UUID validId = protocol.getValidationId(socketToCla);
+				if(ValidationNrContainer.instance().verifyNewNr(validId)){
+					ValidationNrContainer.instance().addNr(validId);
+					System.out.println("CTL recived validationnumber " + validId +  " from CLA");
 				}
 				Thread.sleep(500);
 			} catch (InterruptedException e) {

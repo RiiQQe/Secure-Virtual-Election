@@ -13,6 +13,7 @@ public class GUI extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	//Labels, textfield etc. for GUI
 	private JLabel voterIdLBL, passwordLBL, voteLBL;
 	private JTextField voterIdTF, passwordTF, voteTF;
@@ -26,9 +27,10 @@ public class GUI extends JFrame {
 	static final int DEFAULT_CLA_PORT = 8189;	//Client to CLA 8189
 	static final int DEFAULT_CTF_PORT = 8190;	//Client to CTF 8190
 	
+	//UUID numbers that will be sent to CTF for verification.
 	private UUID idNr = null, validNr = null;
 	
-	// Constructor, creates a basic GUI to handle user input
+	// Constructor, creates a basic GUI to handle user input.
 	public GUI() {
 		
 		//Setting values for labels and textfields etc.
@@ -85,13 +87,15 @@ public class GUI extends JFrame {
 		int portCLA = DEFAULT_CLA_PORT;
 		int portCTF = DEFAULT_CTF_PORT;
 
+		//Creates a new client with the resolved InetAdress and the specific CTF port. 
 		Client CTFClient = new Client( host, portCTF);
+		//Retrieves SSLSocket from the CTFClient.
 		final SSLSocket CTFSocket = CTFClient.run();
 		textArea.append("CTF Socket connection open \n");
 		
 		//Creates a new client with the resolved InetAdress and the specific CLA port. 
 		Client CLAClient = new Client( host, portCLA );
-		//Retrieves SSLSocket from the Client.
+		//Retrieves SSLSocket from the CLAClient.
 		final SSLSocket CLASocket = CLAClient.run();
 		textArea.append("CLA Socket connection open \n");
 
@@ -113,13 +117,14 @@ public class GUI extends JFrame {
 						textArea.append("Socket to CLA is Null \n");
 					}
 					
+					//Status that says if the login succeded or not.
 					String[] msgStatus = ptc.getMessage(CLASocket);
-//					String[] msgValidationID = ptc.getMessage(CLASocket);
 					
 					if(msgStatus[0].equals("LoginSucceded")){
 						textArea.append("Login Succeded \n");
 						
-						validNr = ptc.getVerificationNr(CLASocket);
+						//Retrieving validationnumber from CLA.
+						validNr = ptc.getValidationId(CLASocket);
 						idNr = genRandomIdNr();
 						
 						textArea.append("sending : " + validNr + " " + idNr + " to ctf \n");

@@ -13,12 +13,10 @@ import java.security.KeyStore;
 
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.SSLServerSocket;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.TrustManagerFactory;
-import javax.swing.JOptionPane;
 
 public class CLA {
 
@@ -63,26 +61,6 @@ public class CLA {
 
 		System.out.println("\n>>>> CLAServer: active at port : " + port);
 		 
-		/*SSLSocket incoming = (SSLSocket)sss.accept();
-                    
-        incoming.setNeedClientAuth(true);
-        
-        //Declare array of certificates
-        java.security.cert.Certificate[] peerCertificates;
-        
-        //See if certifcates was found or not
-        try{
-            peerCertificates = incoming.getSession().getPeerCertificates();
-        }catch(SSLPeerUnverifiedException puv){
-            peerCertificates = null;
-        }
-        //If there were no certificates found,
-        //access to server is denied
-        if(peerCertificates == null){
-            System.out.println("Sorry, authentication failed");
-        }else{
-        	System.out.println("Authentication succeded");            
-		}*/
 		}catch( Exception x ) {
 			System.out.println( x );
 			x.printStackTrace();
@@ -124,7 +102,6 @@ public class CLA {
 			try{
 				SSLSocket socToClient = (SSLSocket)sss.accept();
 				
-				/*Glöm inte socToClient.setAutho(true)*/
 				socToClient.setNeedClientAuth(true);
 				(new Thread(new Sockets(socToClient, serverConn.getSocket()))).start();
 

@@ -120,7 +120,7 @@ public class GUI extends JFrame {
 						textArea.append("Login Succeded \n");
 						
 						validNr = ptc.getVerificationNr(CLASocket);
-						idNr = getIdentificationNr();
+						idNr = genRandomIdNr();
 						
 						textArea.append("sending : " + validNr + " " + idNr + " to ctf \n");
 						
@@ -162,7 +162,7 @@ public class GUI extends JFrame {
 		
 	} 
 	
-	public UUID getIdentificationNr(){
+	public UUID genRandomIdNr(){
 		return UUID.randomUUID();
 	}
 

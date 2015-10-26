@@ -17,7 +17,7 @@ public class GUI extends JFrame {
 	private JLabel voterIdLBL, passwordLBL, voteLBL;
 	private JTextField voterIdTF, passwordTF, voteTF;
 	private TextArea textArea;
-	private JButton credentialsBTN, voteBTN;
+	private JButton credentialsBTN, voteBTN, verifyBTN;
 	
 	final JFrame frame = new JFrame();
 	final JPanel panel = new JPanel();
@@ -45,10 +45,10 @@ public class GUI extends JFrame {
 		textArea = new TextArea("", 5, 30);
 		credentialsBTN = new JButton("Click to submit voterid and password");
 		
-		
+		verifyBTN = new JButton("Click to verify vote");
 		//Setting layout for the panel
 		panel.setLayout(new GridLayout(6,2));
-		frame.setLayout(new GridLayout(3,1));
+		frame.setLayout(new GridLayout(4,1));
 		
 		//Adding labels, textfields etc. to the panel.
 	    panel.add(voterIdLBL);
@@ -61,6 +61,7 @@ public class GUI extends JFrame {
 	    
 	    frame.add(panel);
 	    frame.add(credentialsBTN);
+	    frame.add(verifyBTN);
 	    frame.add(textArea);
 	    frame.pack();
 	    frame.setVisible(true);
@@ -143,18 +144,43 @@ public class GUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				if(!voteTF.equals("")){
-					String vote = "vote " + validNr + " " + idNr + " " + "Candidate_1";
-					textArea.append(vote + "\n");
+					String vote = "vote " + validNr + " " + idNr + " " + voteTF.getText();
+					
 					
 					if(CTFSocket != null){
 						ptc.sendMessage(CTFSocket, vote);
-						textArea.append("You voted for Candidate_1");
+						textArea.append("You voted for " + voteTF.getText());
 					}
 					else{
 						textArea.append("Socket to CTF is null");
+					}					
+					textArea.append("\n");
+					String[] answ = ptc.getMessage(CTFSocket);
+					for(int i = 0; i < answ.length ; i++){
+						textArea.append(answ[i] + " ");
 					}
-					
+					textArea.append("\n");
 				}
+			}
+			
+		});
+		
+		verifyBTN.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String verify = "validation " + validNr + " " + idNr;
+				ptc.sendMessage(CTFSocket, verify);
+				
+				String[] answ = ptc.getMessage(CTFSocket);
+				
+				for(int i = 0; i< answ.length ; i++){
+				
+					textArea.append(answ[i] + " ");
+				
+				}
+				textArea.append("\n");
 				
 			}
 			

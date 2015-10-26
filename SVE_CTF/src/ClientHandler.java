@@ -18,7 +18,6 @@ public class ClientHandler implements Runnable{
 	public void run(){
 		
 		while(true){
-			System.out.println("YES");
 			String[] msg = protocol.getMessage(socketToClient);
 			
 			System.out.println("FROM CLIENT in CTF: " + msg[0]);
@@ -45,10 +44,16 @@ public class ClientHandler implements Runnable{
 				UUID validNr2 = UUID.fromString(msg[1]);
 				UUID idNr2 = UUID.fromString(msg[2]);
 				if(ValidationNrContainer.instance().verifyNr(validNr2)){
+
+					System.out.println("VOTE RECIEVED");
 					protocol.sendMessage(socketToClient, "You have not voted");
 				}else if(Tabulation.instance().verifyVote(idNr2)){
+
+					System.out.println("VOTE NOT RECIEVED");
 					protocol.sendMessage(socketToClient, "Your vote is in the tabulation");
 				}else{
+
+					System.out.println("balle");
 					protocol.sendMessage(socketToClient, "Your identification is not in the tabulation, but your validation number is used");
 				}
 				break;

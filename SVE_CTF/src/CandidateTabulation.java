@@ -55,7 +55,15 @@ public class CandidateTabulation {
 			break;
 		}
 	}
-	
+
+	public void displayResult(){
+		System.out.println("###############################################");
+		System.out.println("Kalle Anka had " + candidate1.size() + " votes");
+		System.out.println("Musse Pigg had " + candidate2.size() + " votes");
+		System.out.println("Långben had " + candidate3.size() + " votes");
+		System.out.println("Total voters: " + allVoters.size() + " votes");
+	}
+
 	/*
 	 * verifyVote verifies if the identification number has already 
 	 * been used or not
@@ -67,13 +75,5 @@ public class CandidateTabulation {
             }
 		}
 		return false;
-	}
-	
-	public void displayResult(){
-		System.out.println("###############################################");
-		System.out.println("Musse had " + candidate1.size() + " votes");
-		System.out.println("Kalle had " + candidate2.size() + " votes");
-		System.out.println("Langben had " + candidate3.size() + " votes");
-		System.out.println("Total voters: " + allVoters.size() + " votes");
 	}
 }

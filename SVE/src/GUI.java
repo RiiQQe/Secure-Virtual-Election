@@ -21,7 +21,7 @@ public class GUI extends JFrame {
 	
 	//Labels, textfield etc. for GUI
 	private JLabel voterIdLBL, passwordLBL, voteLBL;
-	private JTextField voterIdTF, passwordTF, voteTF;
+	private JTextField voterIdTF, passwordTF, voteTF, idNrTF;
 	private TextArea textArea;
 	private JButton credentialsBTN, voteBTN, verifyBTN, printAll;
 	
@@ -61,6 +61,9 @@ public class GUI extends JFrame {
 		verifyBTN = new JButton("Click to verify vote");
 		
 		printAll = new JButton("Print all votes");
+		
+		idNrTF = new JTextField(1);
+		
 		printAll.setEnabled(false);
 		
 		can1RBTN.setEnabled(false);
@@ -72,7 +75,7 @@ public class GUI extends JFrame {
 		groupBTN.add(can3RBTN);
 		
 		//Setting layout for the panel
-		panel.setLayout(new GridLayout(10,2));
+		panel.setLayout(new GridLayout(11,2));
 		frame.setLayout(new GridLayout(2,1));
 		
 		//Adding labels, textfields etc. to the panel.
@@ -86,9 +89,10 @@ public class GUI extends JFrame {
 	    panel.add(can3RBTN);
 	    panel.add(credentialsBTN);
 	    panel.add(voteBTN);
-	    panel.add(verifyBTN);
+	    panel.add(idNrTF);
 	    panel.add(printAll);
-	    	 
+	    panel.add(verifyBTN);
+	    
 	    frame.add(panel);
 	    frame.add(textArea);
 	    frame.pack();
@@ -171,7 +175,7 @@ public class GUI extends JFrame {
 						validNr = ptc.getValidationId(CLASocket);
 						idNr = genRandomIdNr();
 						
-						textArea.append("sending : " + validNr + " " + idNr + " to ctf \n");
+						textArea.append("ID number: " + idNr);
 						
 					}
 					else{
@@ -268,19 +272,24 @@ public class GUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
-				String verify = "validation " + validNr + " " + idNr;
-				ptc.sendMessage(CTFSocket, verify);
-				
-				String[] answ = ptc.getMessage(CTFSocket);
-				
-				for(int i = 0; i< answ.length ; i++){
-				
-					textArea.append(answ[i] + " ");
-				
+				if(!idNrTF.getText().equals("")){
+					String verify = "validation " + validNr + " " + idNrTF.getText();
+					ptc.sendMessage(CTFSocket, verify);
+					
+					textArea.append(idNrTF.getText());
+					
+					String[] answ = ptc.getMessage(CTFSocket);
+					
+					for(int i = 0; i< answ.length ; i++){
+					
+						textArea.append(answ[i] + " ");
+					
+					}
+					
+				}else{
+					textArea.append("Fill in ID-nr to verify");
 				}
 				textArea.append("\n");
-				
 			}
 			
 		});

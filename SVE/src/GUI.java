@@ -70,6 +70,8 @@ public class GUI extends JFrame {
 		can2RBTN.setEnabled(false);
 		can3RBTN.setEnabled(false);
 		
+		voteBTN.setEnabled(false);
+		
 		groupBTN.add(can1RBTN);
 		groupBTN.add(can2RBTN);
 		groupBTN.add(can3RBTN);
@@ -170,6 +172,8 @@ public class GUI extends JFrame {
 						can1RBTN.setEnabled(true);
 						can2RBTN.setEnabled(true);
 						can3RBTN.setEnabled(true);
+						
+						voteBTN.setEnabled(true);
 						
 						//Retrieving validationnumber from CLA.
 						validNr = ptc.getValidationId(CLASocket);

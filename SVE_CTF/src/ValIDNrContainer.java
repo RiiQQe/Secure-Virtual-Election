@@ -7,6 +7,9 @@ import java.util.UUID;
 *   Liu-Student id: ricli877 & micsj823  
 */
 
+/*
+ * A container that holds validationIDs and if they have voted or not
+ */
 public class ValIDNrContainer {
 	
 	private Map <UUID, Boolean> map = new HashMap<UUID, Boolean>();

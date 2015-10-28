@@ -1,9 +1,6 @@
 /*
-*
 *   Author: Rickard & Michael
 *   Liu-Student id: ricli877 & micsj823
-*   
-*
 */
 
 import java.io.*;

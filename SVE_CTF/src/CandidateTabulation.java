@@ -1,24 +1,31 @@
 import java.util.LinkedList;
 import java.util.UUID;
 
-public class Tabulation {
+/*
+*   Author: Rickard & Michael
+*   Liu-Student id: ricli877 & micsj823  
+*/
+
+/*
+ * Database that holds all candidates
+ */
+
+public class CandidateTabulation {
 
 	private LinkedList<UUID> candidate1 = new LinkedList<UUID>();
 	private LinkedList<UUID> candidate2 = new LinkedList<UUID>();
 	private LinkedList<UUID> candidate3 = new LinkedList<UUID>();
-	private LinkedList<UUID> candidate4 = new LinkedList<UUID>();
 	private LinkedList<UUID> allVoters = new LinkedList<UUID>();
 	
-	
 	private static class SingeltonHolder {
-        public static final Tabulation INSTANCE = new Tabulation();
+        public static final CandidateTabulation INSTANCE = new CandidateTabulation();
 	}
 		
-	public static Tabulation instance() {
+	public static CandidateTabulation instance() {
 		return SingeltonHolder.INSTANCE;
 	}
 		
-	private Tabulation() {
+	private CandidateTabulation() {
 		
 	}
 	
@@ -27,6 +34,9 @@ public class Tabulation {
 		Musse, Kalle, Langben; 
 	}
 	
+	/*
+	 * addVote adds the users identification number to the specified vote
+	 */
 	public void addVote(UUID idNr, String vote){
 		Candidates candidate = Candidates.valueOf(vote);
 		
@@ -46,14 +56,10 @@ public class Tabulation {
 		}
 	}
 	
-	public void displayResult(){
-		System.out.println("###############################################");
-		System.out.println("Candidate_1 had " + candidate1.size() + " votes");
-		System.out.println("Candidate_2 had " + candidate2.size() + " votes");
-		System.out.println("Candidate_3 had " + candidate3.size() + " votes");
-		System.out.println("Total voters: " + allVoters.size() + " votes");
-	}
-	
+	/*
+	 * verifyVote verifies if the identification number has already 
+	 * been used or not
+	 */
 	public boolean verifyVote(UUID idNr){
 		for(UUID tmpId : allVoters){
             if(tmpId.equals(idNr)){
@@ -61,5 +67,13 @@ public class Tabulation {
             }
 		}
 		return false;
+	}
+	
+	public void displayResult(){
+		System.out.println("###############################################");
+		System.out.println("Musse had " + candidate1.size() + " votes");
+		System.out.println("Kalle had " + candidate2.size() + " votes");
+		System.out.println("Langben had " + candidate3.size() + " votes");
+		System.out.println("Total voters: " + allVoters.size() + " votes");
 	}
 }

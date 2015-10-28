@@ -2,8 +2,19 @@ import java.io.*;
 import java.util.*;
 import javax.net.ssl.*;
 
-public class CTFProtocol {
+/*
+*   Author: Rickard & Michael
+*   Liu-Student id: ricli877 & micsj823  
+*/
 
+/*
+ * Protocol for CTF that receives and sends messages and receives validationIDs
+ */
+public class CTFProtocol {
+	
+	/*
+	 * getMessages receives messages from the specified socket
+	 */
 	public String[] getMessage(SSLSocket socketIn){
 		String msgArr[] = null;
 		
@@ -32,6 +43,9 @@ public class CTFProtocol {
 		return msgArr;
 	}
 	
+	/*
+	 * sendMessage sends messages to the specified socket with the given string
+	 */
 	public void sendMessage(SSLSocket socketOut, String msg){
 		
 		try{
@@ -46,6 +60,9 @@ public class CTFProtocol {
 		
 	}
 	
+	/*
+	 * Receives a validationID from the specified socket
+	 */
 	public UUID getValidationId(SSLSocket socketIn){
 		UUID validId = null;
 		

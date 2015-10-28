@@ -1,0 +1,15 @@
+We have set up an Election Booth with client-side and two servers, CTF and CLA.
+In the Election Booth the voter can vote for their favorite Cartoon. 
+
+The setup with one CTF and one CLA is two prevent cheating. The voter first 
+have to write her UserID and Password. This is sent and verified in the CLA. 
+The CLA then answers with a random ValidationsID two the client, the client
+then automatically sends this to the CTF, the CTF also receives the validationID
+directly from the CLA. The CTF then compares the validationID it received from 
+the CLA and the client. If these are the same, the voter can vote. 
+
+All connections are setup with a TLS-connection to encrypt all the data between
+servers and clients. This is so that the data cannot be manipulated or intercepted.
+
+Keystores and Truststores are used for keys, this is so that only authorized servers
+or clients can connect to the sockets. 

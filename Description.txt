@@ -21,9 +21,9 @@ password and this is verified with the database. (Might do this with a hash, to
 make it even more secure..)
 
 No one can vote more than once:
-This check is done in the CTF, the CTF have a Singleton with all the voters, that
-it receives from the CLA. This Singleton have a boolean that says if the voter 
-already have voted or not. 
+This check is done in the CTF, the CTF have a Singleton with all the voters.
+The CTF receives all voters from the CLA. This Singleton have a boolean that
+says if the voter already have voted or not. 
 
 No one can determine for whom anyone else voted:
 Each candidate only have number of votes, it doesn't know who voted for them. 
@@ -31,11 +31,15 @@ Each validationID only have if it has voted or not, not for whom it voted. This
 makes it impossible for anyone to figure out for whom a voter voted.
 
 No one can duplicate anyone else's votes:
-If someone can steal someones UsedID, password and certificate, they can vote 
+If someone can steal someones UserID, password and certificate, they can vote 
 for this voter if they have'nt already voted. 
 
 Every voter can make sure that her vote has been taken into account:
-They can verify their votes, if they know their IDnumber. 
+They can verify their votes because each voter know their own identifiation number and
+can match it in the GUI by inserting the identification number and click "click to verify vote".
+
+Everyone knows who voted and who didn't:
+The voter can click "Print all votes" which prints the outcome of the election. 
 
 Everyone knows who voted and who didn't:
 This can be checked by accessing the Singleton containing the IDNrs and booleans 

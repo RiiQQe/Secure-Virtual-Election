@@ -18,7 +18,13 @@ public class GUI extends JFrame {
 	private JLabel voterIdLBL, passwordLBL, voteLBL;
 	private JTextField voterIdTF, passwordTF, voteTF;
 	private TextArea textArea;
-	private JButton credentialsBTN, voteBTN, verifyBTN;
+	private JButton credentialsBTN, voteBTN, verifyBTN, printAll;
+	
+	private JRadioButton can1RBTN = new JRadioButton("Kalle Anka");
+	private JRadioButton can2RBTN = new JRadioButton("Musse Pigg");
+	private JRadioButton can3RBTN = new JRadioButton("Långben");
+	
+	private ButtonGroup groupBTN = new ButtonGroup();
 	
 	final JFrame frame = new JFrame();
 	final JPanel panel = new JPanel();
@@ -40,30 +46,45 @@ public class GUI extends JFrame {
 		passwordLBL = new JLabel("Enter your password below:");
 		passwordTF = new JTextField (1);
 		
-		voteLBL = new JLabel("Enter your vote below:");
-		voteTF = new JTextField(1);
+		voteLBL = new JLabel("Connect to CLA and CTF to vote..");
+		//voteTF = new JTextField(1);
 		voteBTN = new JButton("Click to submit your vote");
 		
-		textArea = new TextArea("", 5, 30);
+		textArea = new TextArea("", 120, 600);
 		credentialsBTN = new JButton("Click to submit voterid and password");
 		
 		verifyBTN = new JButton("Click to verify vote");
+		
+		printAll = new JButton("Print all votes");
+		printAll.setEnabled(false);
+		
+		can1RBTN.setEnabled(false);
+		can2RBTN.setEnabled(false);
+		can3RBTN.setEnabled(false);
+		
+		groupBTN.add(can1RBTN);
+		groupBTN.add(can2RBTN);
+		groupBTN.add(can3RBTN);
+		
 		//Setting layout for the panel
-		panel.setLayout(new GridLayout(6,2));
-		frame.setLayout(new GridLayout(4,1));
+		panel.setLayout(new GridLayout(10,2));
+		frame.setLayout(new GridLayout(2,1));
 		
 		//Adding labels, textfields etc. to the panel.
 	    panel.add(voterIdLBL);
 	    panel.add(voteLBL);
 	    panel.add(voterIdTF);
-	    panel.add(voteTF);
+	    panel.add(can1RBTN);
 	    panel.add(passwordLBL);
+	    panel.add(can2RBTN);
+	    panel.add(passwordTF); 
+	    panel.add(can3RBTN);
+	    panel.add(credentialsBTN);
 	    panel.add(voteBTN);
-	    panel.add(passwordTF);
-	    
+	    panel.add(verifyBTN);
+	    panel.add(printAll);
+	    	 
 	    frame.add(panel);
-	    frame.add(credentialsBTN);
-	    frame.add(verifyBTN);
 	    frame.add(textArea);
 	    frame.pack();
 	    frame.setVisible(true);
@@ -135,6 +156,12 @@ public class GUI extends JFrame {
 					if(msgStatus[0].equals("LoginSucceded")){
 						textArea.append("Login Succeded \n");
 						
+						
+						//Make voting enabled
+						can1RBTN.setEnabled(true);
+						can2RBTN.setEnabled(true);
+						can3RBTN.setEnabled(true);
+						
 						//Retrieving validationnumber from CLA.
 						validNr = ptc.getValidationId(CLASocket);
 						idNr = genRandomIdNr();
@@ -154,18 +181,41 @@ public class GUI extends JFrame {
 			
 		});
 		
+		/*This is what happends when vote is done*/
 		voteBTN.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				if(!voteTF.equals("")){
-					String vote = "vote " + validNr + " " + idNr + " " + voteTF.getText();
-					
+				
+				if(can1RBTN.isSelected()){
+					String vote = "vote " + validNr + " " + idNr + " Kalle";
 					
 					if(CTFSocket != null){
 						ptc.sendMessage(CTFSocket, vote);
-						textArea.append("You voted for " + voteTF.getText());
+						textArea.append("voted for: " + can1RBTN.getText());
+					}
+					else{
+						textArea.append("Socket to CTF is null");
+					}					
+					textArea.append("\n");
+					
+					String[] answ = ptc.getMessage(CTFSocket);
+					
+					for(int i = 0; i < answ.length ; i++){
+					
+						textArea.append(answ[i] + " ");
+					
+					}
+					textArea.append("\n");
+					
+				}
+				
+				else if(can2RBTN.isSelected()){
+					String vote = "vote " + validNr + " " + idNr + " Musse";
+					
+					if(CTFSocket != null){
+						ptc.sendMessage(CTFSocket, vote);
+						textArea.append("voted for: " + can2RBTN.getText());
 					}
 					else{
 						textArea.append("Socket to CTF is null");
@@ -181,6 +231,30 @@ public class GUI extends JFrame {
 					}
 					textArea.append("\n");
 				}
+				else if(can3RBTN.isSelected()){
+					String vote = "vote " + validNr + " " + idNr + " Langben";
+					
+					
+					if(CTFSocket != null){
+						ptc.sendMessage(CTFSocket, vote);
+						textArea.append("voted for: " + can3RBTN.getText());
+					}
+					else{
+						textArea.append("Socket to CTF is null");
+					}					
+					textArea.append("\n");
+					
+					String[] answ = ptc.getMessage(CTFSocket);
+					
+					for(int i = 0; i < answ.length ; i++){
+					
+						textArea.append(answ[i] + " ");
+					
+					}
+					textArea.append("\n");
+				}
+				
+				printAll.setEnabled(true);
 			}
 			
 		});
@@ -205,6 +279,18 @@ public class GUI extends JFrame {
 			}
 			
 		});
+		
+		printAll.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				ptc.sendMessage(CTFSocket, "display");
+				
+			}
+			
+		});
+		
+		
 		
 	} 
 	

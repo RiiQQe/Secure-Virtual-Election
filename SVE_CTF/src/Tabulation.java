@@ -24,27 +24,23 @@ public class Tabulation {
 	
 	
 	private enum Candidates {
-		Candidate_1, Candidate_2, Candidate_3, Candidate_4; 
+		Musse, Kalle, Langben; 
 	}
 	
 	public void addVote(UUID idNr, String vote){
 		Candidates candidate = Candidates.valueOf(vote);
 		
 		switch(candidate){
-		case Candidate_1:
+		case Musse:
 			candidate1.add(idNr);
 			allVoters.add(idNr);
 			break;
-		case Candidate_2:
+		case Kalle:
 			candidate2.add(idNr);
 			allVoters.add(idNr);
 			break;
-		case Candidate_3:
+		case Langben:
 			candidate3.add(idNr);
-			allVoters.add(idNr);
-			break;
-		case Candidate_4:
-			candidate4.add(idNr);
 			allVoters.add(idNr);
 			break;
 		}
@@ -55,7 +51,6 @@ public class Tabulation {
 		System.out.println("Candidate_1 had " + candidate1.size() + " votes");
 		System.out.println("Candidate_2 had " + candidate2.size() + " votes");
 		System.out.println("Candidate_3 had " + candidate3.size() + " votes");
-		System.out.println("Candidate_4 had " + candidate4.size() + " votes");
 		System.out.println("Total voters: " + allVoters.size() + " votes");
 	}
 	

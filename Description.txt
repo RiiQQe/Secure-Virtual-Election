@@ -5,8 +5,9 @@ The setup with one CTF and one CLA is two prevent cheating. The voter first
 have to write her UserID and Password. This is sent and verified in the CLA. 
 The CLA then answers with a random ValidationsID to the client, the client
 then automatically sends this to the CTF, the CTF also receives the validationID
-directly from the CLA. The CTF then compares the validationID it received from 
-the CLA and the client. If these are the same, the voter can vote. 
+directly from the CLA. The CTF then compares the validationID received from 
+the CLA and the client. If these are the same, the voter have been authorized
+to vote.
 
 All connections are setup with a TLS-connection to encrypt all the data between
 servers and clients. This is so that the data cannot be manipulated or intercepted.

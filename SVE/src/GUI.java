@@ -7,6 +7,11 @@ import java.util.UUID;
 import javax.net.ssl.SSLSocket;
 import javax.swing.*;
 
+/*
+*   Author: Rickard & Michael
+*   Liu-Student id: ricli877 & micsj823  
+*/
+
 public class GUI extends JFrame {
 	
 	/**
@@ -298,9 +303,6 @@ public class GUI extends JFrame {
 			}
 			
 		});
-		
-		
-		
 	} 
 	
 	public UUID genRandomIdNr(){

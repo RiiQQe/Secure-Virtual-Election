@@ -1,6 +1,11 @@
 
 import java.util.UUID;
 
+/*
+*   Author: Rickard & Michael
+*   Liu-Student id: ricli877 & micsj823  
+*/
+
 public class User {
 
 	private String name, psswrd;

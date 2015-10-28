@@ -3,6 +3,11 @@ import java.util.*;
 
 import javax.net.ssl.SSLSocket;
 
+/*
+*   Author: Rickard & Michael
+*   Liu-Student id: ricli877 & micsj823  
+*/
+
 public class ClientProtocol {
 	
 	//Method to send messages from Client to CLA&CTF. 

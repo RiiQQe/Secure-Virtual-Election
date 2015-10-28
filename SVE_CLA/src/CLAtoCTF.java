@@ -4,7 +4,10 @@ import java.security.KeyStore;
 
 import javax.net.ssl.*;
 
-
+/*
+*   Author: Rickard & Michael
+*   Liu-Student id: ricli877 & micsj823  
+*/
 public class CLAtoCTF {
 
 	private InetAddress host;

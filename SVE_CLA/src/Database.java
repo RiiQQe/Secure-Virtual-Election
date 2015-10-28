@@ -8,6 +8,11 @@ import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
+/*
+*   Author: Rickard & Michael
+*   Liu-Student id: ricli877 & micsj823  
+*/
+
 public class Database {
 	
 	private LinkedList<User> userDB = new LinkedList<User>();
@@ -29,7 +34,7 @@ public class Database {
 	 */
 	
 	private Database (){
-		User user = new User("Kalle", "password", null);
+		User user = new User("Pier", "icecream", null);
 		userDB.add(user);
 	}
 	

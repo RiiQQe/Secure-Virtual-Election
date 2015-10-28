@@ -1,6 +1,10 @@
 import javax.net.ssl.SSLSocket;
 import javax.swing.JOptionPane;
 
+/*
+*   Author: Rickard & Michael
+*   Liu-Student id: ricli877 & micsj823  
+*/
 
 /*
  * Handles sockets from client and CTF-server

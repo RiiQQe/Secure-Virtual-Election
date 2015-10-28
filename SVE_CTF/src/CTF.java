@@ -73,8 +73,8 @@ public class CTF {
 		
 		SSLSocket socketToCLA = null;
 		
-		ValidationNrContainer vc = ValidationNrContainer.instance();
-		Tabulation tb = Tabulation.instance();
+		ValIDNrContainer validCont = ValIDNrContainer.instance();
+		CandidateTabulation candTab = CandidateTabulation.instance();
 		
 		CTF CTFtoCLA = new CTF(portCLA);
 		CTFtoCLA.run();

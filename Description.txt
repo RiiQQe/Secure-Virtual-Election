@@ -34,5 +34,8 @@ No one can duplicate anyone else's votes:
 If someone can steal someones UsedID, password and certificate, they can vote 
 for this voter if they have'nt already voted. 
 
-Every voter can make sure that her vote has been taken into account  
+Every voter can make sure that her vote has been taken into account:
+They can verify their votes, if they know their IDnumber. 
+
+ 
 

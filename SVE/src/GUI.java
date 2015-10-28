@@ -92,14 +92,25 @@ public class GUI extends JFrame {
 		Client CTFClient = new Client( host, portCTF);
 		//Retrieves SSLSocket from the CTFClient.
 		final SSLSocket CTFSocket = CTFClient.run();
-		textArea.append("CTF Socket connection open \n");
+		
+		if(CTFSocket == null){
+			textArea.append("CTF Socket is null \n");
+		}
+		else{
+			textArea.append("CTF Socket connection open \n");
+		}
 		
 		//Creates a new client with the resolved InetAdress and the specific CLA port. 
 		Client CLAClient = new Client( host, portCLA );
 		//Retrieves SSLSocket from the CLAClient.
 		final SSLSocket CLASocket = CLAClient.run();
-		textArea.append("CLA Socket connection open \n");
-
+		
+		if(CTFSocket == null){
+			textArea.append("CLA Socket is null \n");
+		}
+		else{
+			textArea.append("CLA Socket connection open \n");
+		}
 		
 		//ActionListener for the button that submits VoterID and Password. 
 		credentialsBTN.addActionListener(new ActionListener(){

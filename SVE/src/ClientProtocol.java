@@ -50,6 +50,8 @@ public class ClientProtocol {
 
 	}
 	
+	//Returns a UUID(Universal Unique Identifier) which is a
+	//128-bit number to identify a user.
 	public UUID getValidationId(SSLSocket socketIn){
 		UUID validId = null;
 		

@@ -50,7 +50,7 @@ public class Tabulation {
 		}
 	}
 	
-	public void printResult(){
+	public void displayResult(){
 		System.out.println("###############################################");
 		System.out.println("Candidate_1 had " + candidate1.size() + " votes");
 		System.out.println("Candidate_2 had " + candidate2.size() + " votes");

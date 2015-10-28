@@ -6,7 +6,8 @@ import javax.swing.JOptionPane;
  * Handles sockets from client and CTF-server
  * */
 public class Sockets implements Runnable{
-
+	
+	//Sockets to client and CTF.
 	private SSLSocket socToClient;
 	private SSLSocket socToCTF;
 	
@@ -25,21 +26,18 @@ public class Sockets implements Runnable{
 		while(true){
 			if(userAuthorization()){
 				
-				protocol.sendMessage(socToClient, "LoginSucceded");
+				//Sends confirmation to client that the login succeeded.
+				protocol.sendMessage(socToClient, "LoginSucceeded");
+				//Sends validationID to client and CTF.
 				protocol.sendValidationId(socToClient, user.getValidId());
-				
-				//Send to CTF also
-
 				protocol.sendValidationId(socToCTF, user.getValidId());
-				
-				//protocol.sendMessage(socToCTF, "msg");
-				
+								
 			}else protocol.sendMessage(socToClient, "LoginFailed, try again");
 		}
 	}
 	
 	/*
-	 * Returns true or false if the user can be found in the DB
+	 * Returns true or false if the user can/can´t be found in the DB
 	*/
 	
 	public boolean userAuthorization(){

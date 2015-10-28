@@ -12,7 +12,7 @@ public class ClientHandler implements Runnable{
 	}
 	
 	private enum Action {
-		vote, validation, print; 
+		vote, validation, display; 
 	}
 	
 	public void run(){
@@ -51,18 +51,16 @@ public class ClientHandler implements Runnable{
 					protocol.sendMessage(socketToClient, "Your vote is in the tabulation");
 				}else{
 
-					System.out.println("balle");
 					protocol.sendMessage(socketToClient, "Your identification is not in the tabulation, but your validation number is used");
 				}
 				break;
-			case print:
-				Tabulation.instance().printResult();
+			case display:
+				Tabulation.instance().displayResult();
 				break;
 			}
 			try {
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

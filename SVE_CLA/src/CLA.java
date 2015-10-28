@@ -67,10 +67,6 @@ public class CLA {
 		}
 	}
 	
-	/** The test method for the class
-	 * @param args[0] Optional port number in place of
-	 *        the default
-	 */
 	public static void main( String[] args ) {
 	    
 		int clientPort = DEFAULT_CLIENT_PORT;
@@ -78,26 +74,29 @@ public class CLA {
 		InetAddress host;
 		CLAtoCTF serverConn = null;
 		
+		//A singleton which holds the users and passwords. It can be 
+		//accessed in the whole CLA-project but there will only exist 
+		//one Database.
 		Database db = Database.instance();
 		
 		/*
 		 * Use this to connect with CTF 
 		*/
 		try{
+			//"getLocalHost() returns the address of the local host.
 			host = InetAddress.getLocalHost();
+			//Creates a new connection between CLA and CTF.
 			serverConn = new CLAtoCTF(host, CTFPort);
-			//System.out.println("Running CTF again");
 			serverConn.run();
-			//System.out.println("After..");
 		}catch(UnknownHostException e){
 			e.printStackTrace();
 		}
 		
-		
+		//Creates a new CLA for connection to the client.
 		CLA addServer = new CLA( clientPort );
 		
 		addServer.run();
-		
+		//While loop that waits for new users to connect.
 		while(true){
 			try{
 				SSLSocket socToClient = (SSLSocket)sss.accept();

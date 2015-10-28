@@ -132,8 +132,8 @@ public class GUI extends JFrame {
 					//Status that says if the login succeded or not.
 					String[] msgStatus = ptc.getMessage(CLASocket);
 					
-					if(msgStatus[0].equals("LoginSucceded")){
-						textArea.append("Login Succeded \n");
+					if(msgStatus[0].equals("LoginSucceeded")){
+						textArea.append("Login Succeeded \n");
 						
 						//Retrieving validationnumber from CLA.
 						validNr = ptc.getValidationId(CLASocket);

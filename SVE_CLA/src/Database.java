@@ -16,9 +16,17 @@ public class Database {
 		public static final Database INSTANCE = new Database();
 	}
 	
+	/*
+	 * Returns the singleton instance
+	 */
+	
 	public static Database instance(){
 		return SingletonHolder.INSTANCE;
 	}
+	
+	/*
+	 * Adds a user to the database
+	 */
 	
 	private Database (){
 		User user = new User("Kalle", "password", null);

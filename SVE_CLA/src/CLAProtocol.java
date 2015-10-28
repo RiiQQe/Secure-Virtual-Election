@@ -4,14 +4,14 @@ import javax.net.ssl.*;
 import javax.swing.JOptionPane;
 
 /*
- * 	Protocol for CLA, to recieve and send messages
+ * 	Protocol for CLA, to receive and send messages
  * 
  * */
 
 public class CLAProtocol {
 
 	/*
-	 * Used to retrive messages from sockets
+	 * Used to retrieve messages from sockets
 	 * Returns String of the message
 	 */
 	

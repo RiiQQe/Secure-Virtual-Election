@@ -11,7 +11,6 @@ public class CTFProtocol {
 			BufferedReader brIn = new BufferedReader( new InputStreamReader( socketIn.getInputStream() ) );
 			
 			String str = brIn.readLine();
-			System.out.println("hello3");
 			StringTokenizer token = new StringTokenizer( str );
 			
 			int i = 0; 

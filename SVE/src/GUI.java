@@ -69,7 +69,7 @@ public class GUI extends JFrame {
 	    frame.setVisible(true);
 	    
 		frame.setTitle("Virtual Voting Booth");
-		frame.setSize(500, 500);
+		frame.setSize(1000, 1000);
 		//Exits program when closing the window.
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
@@ -160,9 +160,13 @@ public class GUI extends JFrame {
 						textArea.append("Socket to CTF is null");
 					}					
 					textArea.append("\n");
+					
 					String[] answ = ptc.getMessage(CTFSocket);
+					
 					for(int i = 0; i < answ.length ; i++){
+					
 						textArea.append(answ[i] + " ");
+					
 					}
 					textArea.append("\n");
 				}

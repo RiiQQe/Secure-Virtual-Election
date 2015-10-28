@@ -37,5 +37,11 @@ for this voter if they have'nt already voted.
 Every voter can make sure that her vote has been taken into account:
 They can verify their votes, if they know their IDnumber. 
 
+Everyone knows who voted and who didn't:
+This can be checked by accessing the Singleton containing the IDNrs and booleans 
+that shows if they have voted or not.
+
+
+
  
 

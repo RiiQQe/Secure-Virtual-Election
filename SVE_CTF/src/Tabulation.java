@@ -48,9 +48,9 @@ public class Tabulation {
 	
 	public void displayResult(){
 		System.out.println("###############################################");
-		System.out.println("Candidate_1 had " + candidate1.size() + " votes");
-		System.out.println("Candidate_2 had " + candidate2.size() + " votes");
-		System.out.println("Candidate_3 had " + candidate3.size() + " votes");
+		System.out.println("Kalle Anka had " + candidate1.size() + " votes");
+		System.out.println("Musse Pigg had " + candidate2.size() + " votes");
+		System.out.println("Långben had " + candidate3.size() + " votes");
 		System.out.println("Total voters: " + allVoters.size() + " votes");
 	}
 	

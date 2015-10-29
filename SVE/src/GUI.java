@@ -185,7 +185,7 @@ public class GUI extends JFrame {
 					else{
 						textArea.append(msgStatus[0] + "\n");
 					}
-	
+					textArea.append("\n");
 			
 				}
 				
@@ -302,9 +302,37 @@ public class GUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				ptc.sendMessage(CTFSocket, "display");
+				ptc.sendMessage(CTFSocket, "result");
+				
+				String[] answ = ptc.getMessage(CTFSocket);
+				int[] result = new int[answ.length];
+				
+				for(int i = 0; i< answ.length ; i++)
+					result[i] = Integer.parseInt(answ[i]);
+				
+				textArea.append("Kalle Anka: " + result[0] + "\n");
+				textArea.append("Musse Pigg: " + result[1] + "\n");
+				textArea.append("Långben: " + result[2] + "\n");
+				textArea.append("Total voters: " + result[3] + "\n");
+				
+				String[] votersKalle = ptc.getMessage(CTFSocket);
+				String[] votersMusse = ptc.getMessage(CTFSocket);
+				String[] votersLangben = ptc.getMessage(CTFSocket);
+				
+				textArea.append("Voted for Kalle Anka: \n");
+				for(int i = 0; i < votersKalle.length; i++)
+					textArea.append(votersKalle[i] + "\n");
+
+				textArea.append("Voted for Musse Pigg: \n");
+				for(int i = 0; i < votersMusse.length; i++)
+					textArea.append(votersMusse[i] + "\n");
+
+				textArea.append("Voted for Langben: \n");
+				for(int i = 0; i < votersKalle.length; i++)
+					textArea.append(votersLangben[i] + "\n");
 				
 			}
+			
 			
 		});
 	} 

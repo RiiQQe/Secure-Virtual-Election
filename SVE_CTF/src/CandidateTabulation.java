@@ -40,12 +40,14 @@ public class CandidateTabulation {
 	public void addVote(UUID idNr, String vote){
 		Candidates candidate = Candidates.valueOf(vote);
 		
+		System.out.println("You voted for: " + vote);
+		
 		switch(candidate){
-		case Musse:
+		case Kalle:
 			candidate1.add(idNr);
 			allVoters.add(idNr);
 			break;
-		case Kalle:
+		case Musse:
 			candidate2.add(idNr);
 			allVoters.add(idNr);
 			break;
@@ -63,6 +65,41 @@ public class CandidateTabulation {
 		System.out.println("Långben had " + candidate3.size() + " votes");
 		System.out.println("Total voters: " + allVoters.size() + " votes");
 	}
+	
+	public String getResult(){
+		
+		String result = "" + candidate1.size() + " " + candidate2.size() + " " + candidate3.size() + " " + allVoters.size() + "";
+		
+		return result;
+		
+	}
+	
+	public String getIds(int k){
+		String kalle = "";
+		
+		System.out.println("Size of candidate_1 " + candidate1.size());
+		System.out.println("Size of candidate_2 " + candidate2.size());
+		System.out.println("Size of candidate_3 " + candidate3.size());
+		
+		if(k == 1){
+			if(candidate1.size() == 0) return "No vote";
+			for(int i = 0; i < candidate1.size(); i++)
+				kalle = kalle + " " + candidate1.get(i);	
+		}
+		else if(k == 2){
+			if(candidate2.size() == 0) return "No vote";
+			for(int i = 0; i < candidate2.size(); i++)
+				kalle = kalle + " " + candidate2.get(i);	
+		}
+		else{
+			if(candidate3.size() == 0) return "No vote";
+			for(int i = 0; i < candidate3.size(); i++)
+				kalle = kalle + " " + candidate3.get(i);	
+		}
+		
+		return kalle;
+		
+	}
 
 	/*
 	 * verifyVote verifies if the identification number has already 
@@ -70,9 +107,9 @@ public class CandidateTabulation {
 	 */
 	public boolean verifyVote(UUID idNr){
 		for(UUID tmpId : allVoters){
-            if(tmpId.equals(idNr)){
+            if(tmpId.equals(idNr))
                    return true;
-            }
+            
 		}
 		return false;
 	}

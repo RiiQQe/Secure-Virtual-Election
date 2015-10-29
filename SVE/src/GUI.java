@@ -51,7 +51,9 @@ public class GUI extends JFrame {
 		passwordLBL = new JLabel("Enter your password below:");
 		passwordTF = new JTextField (1);
 		
-		voteLBL = new JLabel("Connect to CLA and CTF to vote..");
+
+		voteLBL = new JLabel("Login..");
+
 		voteBTN = new JButton("Click to submit your vote");
 		
 		verifyLBL = new JLabel("Enter your identification number below:");
@@ -177,6 +179,7 @@ public class GUI extends JFrame {
 						can3RBTN.setEnabled(true);
 						
 						voteBTN.setEnabled(true);
+						voteLBL.setText("Choose cartoon: ");
 						
 						//Retrieving validationnumber from CLA.
 						validNr = ptc.getValidationId(CLASocket);
@@ -188,7 +191,7 @@ public class GUI extends JFrame {
 					else{
 						textArea.append(msgStatus[0] + "\n");
 					}
-	
+					textArea.append("\n");
 			
 				}
 				
@@ -209,6 +212,15 @@ public class GUI extends JFrame {
 					if(CTFSocket != null){
 						ptc.sendMessage(CTFSocket, vote);
 						textArea.append("voted for: " + can1RBTN.getText());
+						
+						//Make voting enabled
+						can1RBTN.setEnabled(false);
+						can2RBTN.setEnabled(false);
+						can3RBTN.setEnabled(false);
+						
+						voteBTN.setEnabled(false);
+						voteLBL.setText("Login..");
+						
 					}
 					else{
 						textArea.append("Socket to CTF is null");
@@ -283,7 +295,7 @@ public class GUI extends JFrame {
 					String verify = "validation " + validNr + " " + idNrTF.getText();
 					ptc.sendMessage(CTFSocket, verify);
 					
-					textArea.append(idNrTF.getText());
+					textArea.append(idNrTF.getText() + " \n");
 					
 					String[] answ = ptc.getMessage(CTFSocket);
 					
@@ -305,9 +317,37 @@ public class GUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				ptc.sendMessage(CTFSocket, "display");
+				ptc.sendMessage(CTFSocket, "result");
+				
+				String[] answ = ptc.getMessage(CTFSocket);
+				int[] result = new int[answ.length];
+				
+				for(int i = 0; i< answ.length ; i++)
+					result[i] = Integer.parseInt(answ[i]);
+				
+				textArea.append("Kalle Anka: " + result[0] + "\n");
+				textArea.append("Musse Pigg: " + result[1] + "\n");
+				textArea.append("Långben: " + result[2] + "\n");
+				textArea.append("Total voters: " + result[3] + "\n");
+				
+				String[] votersKalle = ptc.getMessage(CTFSocket);
+				String[] votersMusse = ptc.getMessage(CTFSocket);
+				String[] votersLangben = ptc.getMessage(CTFSocket);
+				
+				textArea.append("Voted for Kalle Anka: \n");
+				for(int i = 0; i < votersKalle.length; i++)
+					textArea.append(votersKalle[i] + "\n");
+
+				textArea.append("Voted for Musse Pigg: \n");
+				for(int i = 0; i < votersMusse.length; i++)
+					textArea.append(votersMusse[i] + "\n");
+
+				textArea.append("Voted for Langben: \n");
+				for(int i = 0; i < votersKalle.length; i++)
+					textArea.append(votersLangben[i] + "\n");
 				
 			}
+			
 			
 		});
 	} 

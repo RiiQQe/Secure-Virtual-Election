@@ -45,10 +45,8 @@ public class ValIDNrContainer {
 	 * Verifies if the validationID already exists or not 
 	 */
 	public boolean verifyNr(UUID number){
-		if(map.get(number) == null){
-			
-			return false;
-		}
+		if(map.get(number) == null) return false;
+		
 		return map.get(number);
 	}
 	
@@ -56,9 +54,8 @@ public class ValIDNrContainer {
 	 * Verifies new validationIDs from CLA server
 	 */
 	public boolean verifyNewNr(UUID number){
-		if(map.get(number) == null){
-			return true;
-		}
+		if(map.get(number) == null) return true;
+		
 		return false;
 	}
 

@@ -19,7 +19,7 @@ public class ClientHandler implements Runnable{
 	}
 	
 	private enum Action {
-		vote, validation, display; 
+		vote, validation, display, result; 
 	}
 	
 	//Thread that will continue receiving/sending messages from/to client as long
@@ -69,6 +69,24 @@ public class ClientHandler implements Runnable{
 				//of the voting.
 				CandidateTabulation.instance().displayResult();
 				break;
+				
+			case result:
+				
+				//String[] msgArr = CandidateTabulation.instance().result();
+				//for(int i = 0; i < msgArr.length; i++)
+				String msgArr = CandidateTabulation.instance().getResult();	
+				protocol.sendMessage(socketToClient, msgArr);
+				
+				String candidate_1 = CandidateTabulation.instance().getIds(1);
+				protocol.sendMessage(socketToClient, candidate_1);
+				
+				String candidate_2 = CandidateTabulation.instance().getIds(2);
+				protocol.sendMessage(socketToClient, candidate_2);
+			
+				String candidate_3 = CandidateTabulation.instance().getIds(3);
+				protocol.sendMessage(socketToClient, candidate_3);
+				
+				
 			}
 			try {
 				Thread.sleep(500);

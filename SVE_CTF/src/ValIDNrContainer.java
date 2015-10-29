@@ -26,14 +26,24 @@ public class ValIDNrContainer {
 		
 	}
 	
+	/*
+	 * Adds a validationID to the map
+	 */
 	public void addNr(UUID number){
 		map.put(number, true);
 	}
 	
+	/*
+	 * Sets a boolean to false when a person(validationID)
+	 * has voted
+	 */
 	public void setVoted(UUID number){
 		map.put(number, false);
 	}
 	
+	/*
+	 * Verifies if the validationID already exists or not 
+	 */
 	public boolean verifyNr(UUID number){
 		if(map.get(number) == null){
 			
@@ -42,6 +52,9 @@ public class ValIDNrContainer {
 		return map.get(number);
 	}
 	
+	/*
+	 * Verifies new validationIDs from CLA server
+	 */
 	public boolean verifyNewNr(UUID number){
 		if(map.get(number) == null){
 			return true;

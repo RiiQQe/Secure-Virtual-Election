@@ -1,3 +1,17 @@
+How to run program:
+1. Run CTF
+2. Run CLA
+3. Run GUI
+
+*Enter voterid "Pier" and password "icecream", click "Click to submit voterid
+ and password".
+*Choose a candidate and click "Click to submit your vote".
+*You will receive a identification number, copy and paste under
+ "Enter your identification number below" and click "Click to verify vote".
+*Click "Print all votes" to print the outcome and identification numbers + 
+ corresponding vote.
+
+Description of system:
 We have set up an Election Booth with client-side and two servers, CTF and CLA.
 In the Election Booth the voter can vote for their favorite Cartoon. 
 

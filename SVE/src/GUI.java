@@ -20,8 +20,8 @@ public class GUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	//Labels, textfield etc. for GUI
-	private JLabel voterIdLBL, passwordLBL, voteLBL;
-	private JTextField voterIdTF, passwordTF, voteTF, idNrTF;
+	private JLabel voterIdLBL, passwordLBL, voteLBL, verifyLBL, nullLBL;
+	private JTextField voterIdTF, passwordTF, idNrTF;
 	private TextArea textArea;
 	private JButton credentialsBTN, voteBTN, verifyBTN, printAll;
 	
@@ -52,9 +52,10 @@ public class GUI extends JFrame {
 		passwordTF = new JTextField (1);
 		
 		voteLBL = new JLabel("Connect to CLA and CTF to vote..");
-		//voteTF = new JTextField(1);
 		voteBTN = new JButton("Click to submit your vote");
 		
+		verifyLBL = new JLabel("Enter your identification number below:");
+		nullLBL = new JLabel("");
 		textArea = new TextArea("", 120, 600);
 		credentialsBTN = new JButton("Click to submit voterid and password");
 		
@@ -91,8 +92,10 @@ public class GUI extends JFrame {
 	    panel.add(can3RBTN);
 	    panel.add(credentialsBTN);
 	    panel.add(voteBTN);
-	    panel.add(idNrTF);
+	    panel.add(verifyLBL);
 	    panel.add(printAll);
+	    panel.add(idNrTF);
+	    panel.add(nullLBL);
 	    panel.add(verifyBTN);
 	    
 	    frame.add(panel);

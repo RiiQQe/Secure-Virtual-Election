@@ -36,6 +36,12 @@ public class Database {
 	private Database (){
 		User user = new User("Pier", "icecream", null);
 		userDB.add(user);
+		
+		User user2 = new User("test", "test", null);
+		userDB.add(user2);
+		
+		User user3 = new User("test2", "test2", null);
+		userDB.add(user3);
 	}
 	
 	/*

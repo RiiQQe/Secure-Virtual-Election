@@ -51,7 +51,7 @@ public class GUI extends JFrame {
 		passwordLBL = new JLabel("Enter your password below:");
 		passwordTF = new JTextField (1);
 		
-		voteLBL = new JLabel("Connect to CLA and CTF to vote..");
+		voteLBL = new JLabel("Login..");
 		//voteTF = new JTextField(1);
 		voteBTN = new JButton("Click to submit your vote");
 		
@@ -174,6 +174,7 @@ public class GUI extends JFrame {
 						can3RBTN.setEnabled(true);
 						
 						voteBTN.setEnabled(true);
+						voteLBL.setText("Choose cartoon: ");
 						
 						//Retrieving validationnumber from CLA.
 						validNr = ptc.getValidationId(CLASocket);
@@ -206,6 +207,15 @@ public class GUI extends JFrame {
 					if(CTFSocket != null){
 						ptc.sendMessage(CTFSocket, vote);
 						textArea.append("voted for: " + can1RBTN.getText());
+						
+						//Make voting enabled
+						can1RBTN.setEnabled(false);
+						can2RBTN.setEnabled(false);
+						can3RBTN.setEnabled(false);
+						
+						voteBTN.setEnabled(false);
+						voteLBL.setText("Login..");
+						
 					}
 					else{
 						textArea.append("Socket to CTF is null");
@@ -280,7 +290,7 @@ public class GUI extends JFrame {
 					String verify = "validation " + validNr + " " + idNrTF.getText();
 					ptc.sendMessage(CTFSocket, verify);
 					
-					textArea.append(idNrTF.getText());
+					textArea.append(idNrTF.getText() + " \n");
 					
 					String[] answ = ptc.getMessage(CTFSocket);
 					

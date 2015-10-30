@@ -75,7 +75,7 @@ public class CandidateTabulation {
 	}
 	
 	public String getIds(int k){
-		String kalle = "";
+		String msg = "";
 		
 		System.out.println("Size of candidate_1 " + candidate1.size());
 		System.out.println("Size of candidate_2 " + candidate2.size());
@@ -84,20 +84,20 @@ public class CandidateTabulation {
 		if(k == 1){
 			if(candidate1.size() == 0) return "No vote";
 			for(int i = 0; i < candidate1.size(); i++)
-				kalle = kalle + " " + candidate1.get(i);	
+				msg = msg + " " + candidate1.get(i);	
 		}
 		else if(k == 2){
 			if(candidate2.size() == 0) return "No vote";
 			for(int i = 0; i < candidate2.size(); i++)
-				kalle = kalle + " " + candidate2.get(i);	
+				msg = msg + " " + candidate2.get(i);	
 		}
 		else{
 			if(candidate3.size() == 0) return "No vote";
 			for(int i = 0; i < candidate3.size(); i++)
-				kalle = kalle + " " + candidate3.get(i);	
+				msg = msg + " " + candidate3.get(i);	
 		}
 		
-		return kalle;
+		return msg;
 		
 	}
 
